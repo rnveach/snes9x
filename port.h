@@ -226,6 +226,7 @@ typedef int64_t				int64;
 typedef uint64_t			uint64;
 #else	// HAVE_STDINT_H
 #ifdef __WIN32__
+typedef __int64             intptr_t;
 typedef intptr_t			pint;
 #else	// __WIN32__
 #ifdef PTR_NOT_INT
