@@ -507,6 +507,46 @@ SOURCE=.\AVIOutput.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\CDirect3D.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CDirect3D.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\CDirectDraw.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CDirectDraw.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\CDirectSound.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CDirectSound.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\cgFunctions.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\cgFunctions.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\COpenGL.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\COpenGL.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\InputCustom.cpp
 # End Source File
 # Begin Source File
@@ -528,6 +568,14 @@ SOURCE=.\wconfig.cpp
 # Begin Source File
 
 SOURCE=.\win32.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\win32_display.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\win32_display.h
 # End Source File
 # Begin Source File
 
@@ -816,6 +864,138 @@ SOURCE=.\rsrc\rt_manif.bin
 # Begin Source File
 
 SOURCE=.\rsrc\snes9x.rc
+# End Source File
+# End Group
+# Begin Group "Filter"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\filter\2xsai.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\2xsai.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\blit.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\blit.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\epx.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\epx.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\hq2x.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\hq2x.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\snes_ntsc.c
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\snes_ntsc.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\snes_ntsc_config.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\snes_ntsc_impl.h
+# End Source File
+# End Group
+# Begin Group "APU"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\apu\apu.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\apu.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\blargg_common.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\blargg_config.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\blargg_endian.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\blargg_source.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\hermite_resampler.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\linear_resampler.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\resampler.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\ring_buffer.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SNES_SPC.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SNES_SPC.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SNES_SPC_misc.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SNES_SPC_state.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SPC_CPU.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SPC_DSP.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SPC_DSP.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SPC_Filter.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\apu\SPC_Filter.h
 # End Source File
 # End Group
 # End Target
