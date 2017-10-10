@@ -113,7 +113,7 @@ BSC32=bscmake.exe
 LINK32=link.exe
 # ADD BASE LINK32 opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib winmm.lib ddraw.lib dsound.lib dxguid.lib snes9xw.lib glide2x.lib delayimp.lib fmodvc.lib /nologo /subsystem:windows /incremental:yes /debug /machine:I386 /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll
 # SUBTRACT BASE LINK32 /profile
-# ADD LINK32 zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib fmodvc.lib vfw32.lib /nologo /subsystem:windows /machine:I386 /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll
+# ADD LINK32 zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib vfw32.lib /nologo /subsystem:windows /machine:I386 /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll
 # SUBTRACT LINK32 /pdb:none /debug
 
 !ENDIF 

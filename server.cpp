@@ -196,9 +196,9 @@
 	#include <process.h>
 	#include "win32/wsnes9x.h"
 	#define ioctl ioctlsocket
-	#define close closesocket
-	#define read(a,b,c) recv(a, b, c, 0)
-	#define write(a,b,c) send(a, b, c, 0)
+	#define SOCKET_CLOSE closesocket
+	#define SOCKET_READ(a,b,c) recv(a, b, c, 0)
+	#define SOCKET_WRITE(a,b,c) send(a, b, c, 0)
 	#define gettimeofday(a,b) S9xGetTimeOfDay (a)
 	#define exit(a) _endthread()
 	void S9xGetTimeOfDay (struct timeval *n);
@@ -256,7 +256,7 @@ void S9xNPShutdownClient (int c, bool8 report_error = FALSE)
         NPServer.Clients [c].Connected = FALSE;
         NPServer.Clients [c].SaidHello = FALSE;
 
-        close (NPServer.Clients [c].Socket);
+        SOCKET_CLOSE (NPServer.Clients [c].Socket);
 #ifdef NP_DEBUG
         printf ("SERVER: Player %d disconnecting @%ld\n", c + 1, S9xGetMilliTime () - START);
 #endif
@@ -303,7 +303,7 @@ static bool8 S9xNPSGetData (int socket, uint8 *data, int length)
         if (num_bytes > 512)
             num_bytes = 512;
 
-        int got = read (socket, (char *) ptr, num_bytes);
+        int got = SOCKET_READ (socket, (char *) ptr, num_bytes);
         if (got < 0)
         {
 	    if (errno == EINTR
@@ -362,7 +362,7 @@ static bool8 S9xNPSSendData (int fd, const uint8 *data, int length)
             num_bytes = chunk;
 
 	int sent;
-	sent = write (fd, (char *) data, len);
+	sent = SOCKET_WRITE (fd, (char *) data, len);
 
 	if (sent < 0)
 	{
@@ -705,7 +705,7 @@ void S9xNPAcceptClient (int Listen, bool8 block)
 		    (char *) &val2, sizeof (val2)) < 0)
     {
         S9xNPSetError ("Setting socket options failed.");
-	close (new_fd);
+	SOCKET_CLOSE (new_fd);
         return;
     }
 
@@ -731,7 +731,7 @@ void S9xNPAcceptClient (int Listen, bool8 block)
     if (i >= NP_MAX_CLIENTS)
     {
         S9xNPSetError ("SERVER: Maximum number of NetPlay Clients have already connected.");
-	close (new_fd);
+	SOCKET_CLOSE (new_fd);
 	return;
     }
 
@@ -1066,7 +1066,7 @@ void S9xNPStopServer ()
     printf ("SERVER: Stopping server @%ld\n", S9xGetMilliTime () - START);
 #endif
     server_continue = FALSE;
-    close (NPServer.Socket);
+    SOCKET_CLOSE (NPServer.Socket);
 
     for (int i = 0; i < NP_MAX_CLIENTS; i++)
     {
@@ -1195,7 +1195,7 @@ void S9xNPSyncClient (int client)
     }
 #ifdef HAVE_MKSTEMP
     if (fd != -1)
-        close(fd);
+        SOCKET_CLOSE(fd);
 #endif
 }
 

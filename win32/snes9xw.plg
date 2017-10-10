@@ -6,22 +6,9 @@
 --------------------Configuration: Snes9X - Win32 C core--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\048723\AppData\Local\Temp\RSP78AA.tmp" with contents
+Creating temporary file "C:\Users\048723\AppData\Local\Temp\RSP2162.tmp" with contents
 [
-/nologo /Zp4 /MT /W3 /GX /Zi /O2 /I "..\..\zlib" /I "..\\" /I "..\..\FMOD\api\inc" /D "DEBUGGER" /D "SDD1_DECOMP" /D "CORRECT_VRAM_READS" /D "HAVE_LIBPNG" /D "SPC700_SHUTDOWN" /D "CPU_SHUTDOWN" /D "ZLIB" /D "VAR_CYCLES" /D "UNZIP_SUPPORT" /D "EXECUTE_SUPERFX_PER_LINE" /D "__WIN32__" /D "__MSC__" /D "USE_OPENGL" /D "NDEBUG" /D "NETPLAY_SUPPORT" /D "FMOD_SUPPORT" /D "NEW_COLOUR_BLENDING" /Fp"Snes9X___Win32_C_core/snes9xw.pch" /YX /Fo"Snes9X___Win32_C_core/" /Fd"Snes9X___Win32_C_core/" /FD /c 
-"D:\Rickys\projectsEx\snes9x\netplay.cpp"
-"D:\Rickys\projectsEx\snes9x\sa1.cpp"
-"D:\Rickys\projectsEx\snes9x\server.cpp"
-"D:\Rickys\projectsEx\snes9x\snapshot.cpp"
-"D:\Rickys\projectsEx\snes9x\spc7110.cpp"
-"D:\Rickys\projectsEx\snes9x\win32\render.cpp"
-"D:\Rickys\projectsEx\snes9x\win32\win32.cpp"
-"D:\Rickys\projectsEx\snes9x\win32\wsnes9x.cpp"
-]
-Creating command line "cl.exe @C:\Users\048723\AppData\Local\Temp\RSP78AA.tmp" 
-Creating temporary file "C:\Users\048723\AppData\Local\Temp\RSP78AB.tmp" with contents
-[
-zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib fmodvc.lib vfw32.lib /nologo /subsystem:windows /incremental:no /pdb:"Snes9X___Win32_C_core/snes9xw.pdb" /machine:I386 /out:"Snes9X___Win32_C_core/snes9xw.exe" /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll 
+zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib vfw32.lib /nologo /subsystem:windows /incremental:no /pdb:"Snes9X___Win32_C_core/snes9xw.pdb" /machine:I386 /out:"Snes9X___Win32_C_core/snes9xw.exe" /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll 
 .\Snes9X___Win32_C_core\bsx.obj
 .\Snes9X___Win32_C_core\c4.obj
 .\Snes9X___Win32_C_core\c4emu.obj
@@ -82,86 +69,128 @@ zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib op
 .\Snes9X___Win32_C_core\winout.obj
 .\Snes9X___Win32_C_core\snes9x.res
 ]
-Creating command line "link.exe @C:\Users\048723\AppData\Local\Temp\RSP78AB.tmp"
+Creating command line "link.exe @C:\Users\048723\AppData\Local\Temp\RSP2162.tmp"
 <h3>Output Window</h3>
-Compiling...
-netplay.cpp
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : warning C4003: not enough actual parameters for macro 'write'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(272) : see reference to class template instantiation 'std::basic_ostream<_E,_Tr>' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(373) : see reference to class template instantiation 'std::basic_ostream<char,struct std::char_traits<char> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(379) : see reference to class template instantiation 'std::basic_ostream<unsigned short,struct std::char_traits<unsigned short> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : warning C4003: not enough actual parameters for macro 'read'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(353) : warning C4003: not enough actual parameters for macro 'read'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(423) : see reference to class template instantiation 'std::basic_istream<_E,_Tr>' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(544) : see reference to class template instantiation 'std::basic_istream<char,struct std::char_traits<char> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(564) : see reference to class template instantiation 'std::basic_istream<unsigned short,struct std::char_traits<unsigned short> >' being compiled
-sa1.cpp
-D:\Rickys\projectsEx\snes9x\sa1.cpp(713) : error C2059: syntax error : 'bad suffix on number'
-D:\Rickys\projectsEx\snes9x\sa1.cpp(713) : error C2146: syntax error : missing ')' before identifier 'L'
-D:\Rickys\projectsEx\snes9x\sa1.cpp(713) : error C2059: syntax error : ')'
-D:\Rickys\projectsEx\snes9x\sa1.cpp(714) : error C2059: syntax error : 'bad suffix on number'
-D:\Rickys\projectsEx\snes9x\sa1.cpp(714) : error C2146: syntax error : missing ')' before identifier 'L'
-D:\Rickys\projectsEx\snes9x\sa1.cpp(714) : error C2059: syntax error : ')'
-server.cpp
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : warning C4003: not enough actual parameters for macro 'write'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(272) : see reference to class template instantiation 'std::basic_ostream<_E,_Tr>' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(373) : see reference to class template instantiation 'std::basic_ostream<char,struct std::char_traits<char> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(241) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\ostream(379) : see reference to class template instantiation 'std::basic_ostream<unsigned short,struct std::char_traits<unsigned short> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : warning C4003: not enough actual parameters for macro 'read'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(353) : warning C4003: not enough actual parameters for macro 'read'
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(423) : see reference to class template instantiation 'std::basic_istream<_E,_Tr>' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(544) : see reference to class template instantiation 'std::basic_istream<char,struct std::char_traits<char> >' being compiled
-D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(331) : error C2059: syntax error : ','
-        D:\Program Files\Microsoft Visual Studio 6\VC98\INCLUDE\istream(564) : see reference to class template instantiation 'std::basic_istream<unsigned short,struct std::char_traits<unsigned short> >' being compiled
-D:\Rickys\projectsEx\snes9x\server.cpp(1054) : error C2065: 'uintptr_t' : undeclared identifier
-snapshot.cpp
-spc7110.cpp
-D:\Rickys\projectsEx\snes9x\spc7110dec.cpp(133) : warning C4805: '&' : unsafe mix of type 'unsigned int' and type 'bool' in operation
-D:\Rickys\projectsEx\snes9x\spc7110dec.cpp(226) : warning C4805: '&' : unsafe mix of type 'unsigned int' and type 'bool' in operation
-D:\Rickys\projectsEx\snes9x\spc7110dec.cpp(333) : warning C4805: '&' : unsafe mix of type 'unsigned int' and type 'bool' in operation
-D:\Rickys\projectsEx\snes9x\spc7110dec.cpp(469) : warning C4800: 'const unsigned char' : forcing value to bool 'true' or 'false' (performance warning)
-render.cpp
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(265) : error C2783: 'void __cdecl RenderHQ2X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(265) : error C2563: mismatch in formal parameter list
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(266) : error C2783: 'void __cdecl RenderHQ2X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(266) : error C2563: mismatch in formal parameter list
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(267) : error C2783: 'void __cdecl RenderHQ2X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(267) : error C2563: mismatch in formal parameter list
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(274) : error C2783: 'void __cdecl RenderHQ3X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(274) : error C2563: mismatch in formal parameter list
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(275) : error C2783: 'void __cdecl RenderHQ3X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(275) : error C2563: mismatch in formal parameter list
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(276) : error C2783: 'void __cdecl RenderHQ3X(struct SSurface,struct SSurface,struct tagRECT *)' : could not deduce template argument for 'T'
-D:\Rickys\projectsEx\snes9x\win32\render.cpp(276) : error C2563: mismatch in formal parameter list
-win32.cpp
-D:\Rickys\projectsEx\snes9x\win32\win32.cpp(989) : error C2065: 'CoInitializeEx' : undeclared identifier
-D:\Rickys\projectsEx\snes9x\win32\win32.cpp(1308) : warning C4800: 'unsigned char' : forcing value to bool 'true' or 'false' (performance warning)
-wsnes9x.cpp
-D:\Rickys\projectsEx\snes9x\win32\../conffile.h(374) : warning C4786: 'std::_Tree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned int>,std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned int,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Kfn,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >' : identifier was truncated to '255' characters in the debug information
-D:\Rickys\projectsEx\snes9x\win32\../conffile.h(374) : warning C4786: 'std::_Tree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned int>,std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned int,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Kfn,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::iterator' : identifier was truncated to '255' characters in the debug information
-D:\Rickys\projectsEx\snes9x\win32\../conffile.h(374) : warning C4786: 'std::_Tree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned int>,std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned int,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Kfn,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::const_iterator' : identifier was truncated to '255' characters in the debug information
-D:\Rickys\projectsEx\snes9x\win32\../conffile.h(374) : warning C4786: 'std::_Tree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned int>,std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned int,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Kfn,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Node' : identifier was truncated to '255' characters in the debug information
-D:\Rickys\projectsEx\snes9x\win32\../conffile.h(374) : warning C4786: 'std::_Tree<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::pair<std::basic_string<char,std::char_traits<char>,std::allocator<char> > const ,unsigned int>,std::map<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,unsigned int,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::_Kfn,std::less<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >,std::allocator<unsigned int> >::iterator' : identifier was truncated to '255' characters in the debug information
-D:\Rickys\projectsEx\snes9x\win32\wsnes9x.cpp(4359) : warning C4800: 'unsigned int' : forcing value to bool 'true' or 'false' (performance warning)
-D:\Rickys\projectsEx\snes9x\win32\wsnes9x.cpp(4379) : error C2065: '_tstoi' : undeclared identifier
-D:\Rickys\projectsEx\snes9x\win32\wsnes9x.cpp(6636) : error C2065: '_stprintf_s' : undeclared identifier
-Error executing cl.exe.
+Linking...
+wsnes9x.obj : warning LNK4044: unrecognized option "manifestdependency:type='Win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'"; ignored
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: _free already defined in LIBCMT.lib(free.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: _malloc already defined in LIBCMT.lib(malloc.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: _sprintf already defined in LIBCMT.lib(sprintf.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __errno already defined in LIBCMT.lib(dosmap.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: _memchr already defined in LIBCMT.lib(memchr.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __lseek already defined in LIBCMT.lib(lseek.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __open already defined in LIBCMT.lib(open.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __read already defined in LIBCMT.lib(read.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __close already defined in LIBCMT.lib(close.obj)
+MSVCRT.lib(MSVCRT.dll) : error LNK2005: __write already defined in LIBCMT.lib(write.obj)
+LINK : warning LNK4098: defaultlib "MSVCRT" conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4199: /DELAYLOAD:fmod.dll ignored; no imports found from fmod.dll
+dma.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xGetDSP(unsigned short)" (?S9xGetDSP@@YAEG@Z)
+cheats2.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xGetDSP(unsigned short)" (?S9xGetDSP@@YAEG@Z)
+cpu.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xGetDSP(unsigned short)" (?S9xGetDSP@@YAEG@Z)
+cpuexec.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xGetDSP(unsigned short)" (?S9xGetDSP@@YAEG@Z)
+cpuops.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xGetDSP(unsigned short)" (?S9xGetDSP@@YAEG@Z)
+cheats2.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetDSP(unsigned char,unsigned short)" (?S9xSetDSP@@YAXEG@Z)
+cpuops.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetDSP(unsigned char,unsigned short)" (?S9xSetDSP@@YAXEG@Z)
+dma.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetDSP(unsigned char,unsigned short)" (?S9xSetDSP@@YAXEG@Z)
+controls.obj : error LNK2001: unresolved external symbol "void __cdecl S9xDumpSPCSnapshot(void)" (?S9xDumpSPCSnapshot@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xDumpSPCSnapshot(void)" (?S9xDumpSPCSnapshot@@YAXXZ)
+cpu.obj : error LNK2001: unresolved external symbol "void __cdecl S9xResetDSP(void)" (?S9xResetDSP@@YAXXZ)
+cpu.obj : error LNK2001: unresolved external symbol "void __cdecl S9xResetAPU(void)" (?S9xResetAPU@@YAXXZ)
+cpu.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSoftResetAPU(void)" (?S9xSoftResetAPU@@YAXXZ)
+cpuexec.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUSetReferenceTime(int)" (?S9xAPUSetReferenceTime@@YAXH@Z)
+cpuexec.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUEndScanline(void)" (?S9xAPUEndScanline@@YAXXZ)
+debug.obj : error LNK2001: unresolved external symbol "public: void __thiscall SNES_SPC::debug_toggle_trace(void)" (?debug_toggle_trace@SNES_SPC@@QAEXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "public: void __thiscall SNES_SPC::debug_toggle_trace(void)" (?debug_toggle_trace@SNES_SPC@@QAEXXZ)
+debug.obj : error LNK2001: unresolved external symbol "struct SNES_SPC * spc_core" (?spc_core@@3PAUSNES_SPC@@A)
+snapshot.obj : error LNK2001: unresolved external symbol "struct SNES_SPC * spc_core" (?spc_core@@3PAUSNES_SPC@@A)
+wsnes9x.obj : error LNK2001: unresolved external symbol "struct SNES_SPC * spc_core" (?spc_core@@3PAUSNES_SPC@@A)
+gfx.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xInitUpdate(void)" (?S9xInitUpdate@@YAEXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xInitUpdate(void)" (?S9xInitUpdate@@YAEXZ)
+gfx.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xDeinitUpdate(int,int)" (?S9xDeinitUpdate@@YAEHH@Z)
+gfx.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetPalette(void)" (?S9xSetPalette@@YAXXZ)
+gfx.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xContinueUpdate(int,int)" (?S9xContinueUpdate@@YAEHH@Z)
+gfx.obj : error LNK2001: unresolved external symbol "void __cdecl WinDisplayStringFromBottom(char const *,int,int,bool)" (?WinDisplayStringFromBottom@@YAXPBDHH_N@Z)
+loadzip.obj : error LNK2001: unresolved external symbol _unzCloseCurrentFile
+memmap.obj : error LNK2001: unresolved external symbol _unzCloseCurrentFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzReadCurrentFile
+reader.obj : error LNK2001: unresolved external symbol _unzReadCurrentFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzClose
+wsnes9x.obj : error LNK2001: unresolved external symbol _unzClose
+loadzip.obj : error LNK2001: unresolved external symbol _unzOpenCurrentFile
+memmap.obj : error LNK2001: unresolved external symbol _unzOpenCurrentFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzLocateFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzGoToNextFile
+memmap.obj : error LNK2001: unresolved external symbol _unzGoToNextFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzGetCurrentFileInfo
+memmap.obj : error LNK2001: unresolved external symbol _unzGetCurrentFileInfo
+wsnes9x.obj : error LNK2001: unresolved external symbol _unzGetCurrentFileInfo
+loadzip.obj : error LNK2001: unresolved external symbol _unzGoToFirstFile
+memmap.obj : error LNK2001: unresolved external symbol _unzGoToFirstFile
+loadzip.obj : error LNK2001: unresolved external symbol _unzOpen
+memmap.obj : error LNK2001: unresolved external symbol _unzOpen
+wsnes9x.obj : error LNK2001: unresolved external symbol _unzOpen
+memmap.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl DSP4GetByte(unsigned short)" (?DSP4GetByte@@YAEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "void __cdecl DSP4SetByte(unsigned char,unsigned short)" (?DSP4SetByte@@YAXEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl DSP3GetByte(unsigned short)" (?DSP3GetByte@@YAEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "void __cdecl DSP3SetByte(unsigned char,unsigned short)" (?DSP3SetByte@@YAXEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl DSP2GetByte(unsigned short)" (?DSP2GetByte@@YAEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "void __cdecl DSP2SetByte(unsigned char,unsigned short)" (?DSP2SetByte@@YAXEG@Z)
+memmap.obj : error LNK2001: unresolved external symbol "unsigned char (__cdecl* GetDSP)(unsigned short)" (?GetDSP@@3P6AEG@ZA)
+memmap.obj : error LNK2001: unresolved external symbol "void (__cdecl* SetDSP)(unsigned char,unsigned short)" (?SetDSP@@3P6AXEG@ZA)
+memmap.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUAllowTimeOverflow(bool)" (?S9xAPUAllowTimeOverflow@@YAX_N@Z)
+memmap.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUTimingSetSpeedup(int)" (?S9xAPUTimingSetSpeedup@@YAXH@Z)
+ppu.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUWritePort(int,unsigned char)" (?S9xAPUWritePort@@YAXHE@Z)
+ppu.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xAPUReadPort(int)" (?S9xAPUReadPort@@YAEH@Z)
+snapshot.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPUSaveState(unsigned char *)" (?S9xAPUSaveState@@YAXPAE@Z)
+snapshot.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetSoundMute(unsigned char)" (?S9xSetSoundMute@@YAXE@Z)
+win32.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetSoundMute(unsigned char)" (?S9xSetSoundMute@@YAXE@Z)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetSoundMute(unsigned char)" (?S9xSetSoundMute@@YAXE@Z)
+snapshot.obj : error LNK2001: unresolved external symbol "void __cdecl S9xAPULoadState(unsigned char *)" (?S9xAPULoadState@@YAXPAE@Z)
+snapshot.obj : error LNK2001: unresolved external symbol "public: void __thiscall SNES_SPC::save_spc(void *)" (?save_spc@SNES_SPC@@QAEXPAX@Z)
+snapshot.obj : error LNK2001: unresolved external symbol "public: static void __cdecl SNES_SPC::init_header(void *)" (?init_header@SNES_SPC@@SAXPAX@Z)
+render.obj : error LNK2001: unresolved external symbol "void __cdecl SuperEagle(unsigned char *,int,unsigned char *,int,int,int)" (?SuperEagle@@YAXPAEH0HHH@Z)
+render.obj : error LNK2001: unresolved external symbol "void __cdecl _2xSaI(unsigned char *,int,unsigned char *,int,int,int)" (?_2xSaI@@YAXPAEH0HHH@Z)
+render.obj : error LNK2001: unresolved external symbol "void __cdecl Super2xSaI(unsigned char *,int,unsigned char *,int,int,int)" (?Super2xSaI@@YAXPAEH0HHH@Z)
+render.obj : error LNK2001: unresolved external symbol "void __cdecl HQ4X_16(unsigned char *,unsigned int,unsigned char *,unsigned int,int,int)" (?HQ4X_16@@YAXPAEI0IHH@Z)
+render.obj : error LNK2001: unresolved external symbol "void __cdecl HQ2X_16(unsigned char *,unsigned int,unsigned char *,unsigned int,int,int)" (?HQ2X_16@@YAXPAEI0IHH@Z)
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_init
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_composite
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_svideo
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_rgb
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_blit
+render.obj : error LNK2001: unresolved external symbol _snes_ntsc_blit_hires
+win32.obj : error LNK2001: unresolved external symbol "bool __cdecl ReInitSound(void)" (?ReInitSound@@YA_NXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "bool __cdecl ReInitSound(void)" (?ReInitSound@@YA_NXZ)
+win32.obj : error LNK2001: unresolved external symbol "bool __cdecl WinDisplayReset(void)" (?WinDisplayReset@@YA_NXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "bool __cdecl WinDisplayReset(void)" (?WinDisplayReset@@YA_NXZ)
+win32.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xInitAPU(void)" (?S9xInitAPU@@YAEXZ)
+win32.obj : error LNK2001: unresolved external symbol "void __cdecl CloseSoundDevice(void)" (?CloseSoundDevice@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl CloseSoundDevice(void)" (?CloseSoundDevice@@YAXXZ)
+win32.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xMixSamples(unsigned char *,int)" (?S9xMixSamples@@YAEPAEH@Z)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl ToggleFullScreen(void)" (?ToggleFullScreen@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl WinChangeWindowSize(unsigned int,unsigned int)" (?WinChangeWindowSize@@YAXII@Z)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl SaveMainWinPos(void)" (?SaveMainWinPos@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl WinRefreshDisplay(void)" (?WinRefreshDisplay@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl WinDisplayApplyChanges(void)" (?WinDisplayApplyChanges@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetWinPixelFormat(void)" (?S9xSetWinPixelFormat@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl SwitchToGDI(void)" (?SwitchToGDI@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl RestoreSNESDisplay(void)" (?RestoreSNESDisplay@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl RestoreGUIDisplay(void)" (?RestoreGUIDisplay@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xDeinitAPU(void)" (?S9xDeinitAPU@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xClearSamples(void)" (?S9xClearSamples@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "unsigned char __cdecl S9xSyncSound(void)" (?S9xSyncSound@@YAEXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl RestoreMainWinPos(void)" (?RestoreMainWinPos@@YAXXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "public: bool __thiscall SNES_SPC::debug_is_enabled(void)" (?debug_is_enabled@SNES_SPC@@QAE_NXZ)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl WinEnumDisplayModes(class std::vector<struct dMode,class std::allocator<struct dMode> > *)" (?WinEnumDisplayModes@@YAXPAV?$vector@UdMode@@V?$allocator@UdMode@@@std@@@std@@@Z)
+wsnes9x.obj : error LNK2001: unresolved external symbol "void __cdecl S9xSetSoundControl(unsigned char)" (?S9xSetSoundControl@@YAXE@Z)
+Snes9X___Win32_C_core/snes9xw.exe : fatal error LNK1120: 73 unresolved externals
+Error executing link.exe.
 
 
 
 <h3>Results</h3>
-snes9xw.exe - 34 error(s), 17 warning(s)
+snes9xw.exe - 110 error(s), 3 warning(s)
 </pre>
 </body>
 </html>
