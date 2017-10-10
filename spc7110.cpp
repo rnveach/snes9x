@@ -396,10 +396,10 @@ void S9xSPC7110PreSaveState (void)
 	s7snap.decomp_buffer_wroffset = (uint32) s7emu.decomp.decomp_buffer_wroffset;
 	s7snap.decomp_buffer_length   = (uint32) s7emu.decomp.decomp_buffer_length;
 
-	for (int i = 0; i < 32; i++)
+	for (int j = 0; j < 32; j++)
 	{
-		s7snap.context[i].index  = s7emu.decomp.context[i].index;
-		s7snap.context[i].invert = s7emu.decomp.context[i].invert;
+		s7snap.context[j].index  = s7emu.decomp.context[j].index;
+		s7snap.context[j].invert = s7emu.decomp.context[j].invert;
 	}
 }
 
@@ -477,10 +477,10 @@ void S9xSPC7110PostLoadState (int version)
 	s7emu.decomp.decomp_buffer_wroffset = (unsigned) s7snap.decomp_buffer_wroffset;
 	s7emu.decomp.decomp_buffer_length   = (unsigned) s7snap.decomp_buffer_length;
 
-	for (int i = 0; i < 32; i++)
+	for (int j = 0; j < 32; j++)
 	{
-		s7emu.decomp.context[i].index  = s7snap.context[i].index;
-		s7emu.decomp.context[i].invert = s7snap.context[i].invert;
+		s7emu.decomp.context[j].index  = s7snap.context[j].index;
+		s7emu.decomp.context[j].invert = s7snap.context[j].invert;
 	}
 
 	s7emu.update_time(0);

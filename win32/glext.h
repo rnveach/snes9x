@@ -4730,7 +4730,6 @@ typedef unsigned long long int uint64_t;
 #elif defined(_WIN32) && defined(__GNUC__)
 #include <stdint.h>
 #elif defined(_WIN32)
-typedef __int32 int32_t;
 typedef __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 #else

@@ -233,6 +233,8 @@ typedef int64_t				int64;
 typedef uint64_t			uint64;
 #else	// HAVE_STDINT_H
 #ifdef __WIN32__
+typedef __int64             intptr_t;
+typedef unsigned __int64    uintptr_t;
 typedef intptr_t			pint;
 typedef signed char			int8;
 typedef unsigned char		uint8;

@@ -202,7 +202,6 @@ private:
 		bool linearFilter;
         bool useFloatTex;
         unsigned int frameCounterMod;
-		CGprogram cgVertexProgram, cgFragmentProgram;
 		LPDIRECT3DTEXTURE9    tex;
 		LPDIRECT3DVERTEXBUFFER9 vertexBuffer;
 		LPDIRECT3DVERTEXDECLARATION9 vertexDeclaration;
@@ -211,9 +210,7 @@ private:
 		D3DXVECTOR2 outputSize;
 		D3DXVECTOR2 textureSize;
 
-		_shaderPass()  {cgVertexProgram=NULL;
-					    cgFragmentProgram=NULL;
-						tex=NULL;
+		_shaderPass()  {tex=NULL;
 						vertexBuffer=NULL;
 						vertexDeclaration=NULL;}
 	} shaderPass;
@@ -246,17 +243,16 @@ private:
 	void setViewport(DWORD x, DWORD y, DWORD width, DWORD height);
 	void setShaderVars(int pass);
 	void ensureTextureSize(LPDIRECT3DTEXTURE9 &tex, D3DXVECTOR2 &texSize, D3DXVECTOR2 wantedSize,bool renderTarget, bool useFloat = false);
-	void fillParameterMap(std::vector<parameterEntry> &map, CGparameter param);
+	void fillParameterMap(std::vector<parameterEntry> &map);
 	void setupVertexDeclaration(shaderPass &pass);
 	void calculateMatrix();
 
 	LPDIRECT3DDEVICE9     pDevice;
-	CGcontext cgContext;
 	unsigned int frameCnt;
 	D3DXMATRIX mvp;
 
 public:
-	CD3DCG(CGcontext cgContext,LPDIRECT3DDEVICE9 pDevice);
+	CD3DCG(LPDIRECT3DDEVICE9 pDevice);
 	~CD3DCG(void);
 
 	bool LoadShader(const TCHAR *shaderFile);

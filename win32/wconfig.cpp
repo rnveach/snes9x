@@ -755,12 +755,12 @@ void WinPreSave(ConfigFile& conf)
 		strcat(filterString, temp);
 	}
 	strcpy(filterString2, "hi-res output filter: ");
-	for(int i=0;i<NUM_FILTERS;i++)
+	for(int j=0;j<NUM_FILTERS;j++)
 	{
-		if(GetFilterHiResSupport((RenderFilter)i))
+		if(GetFilterHiResSupport((RenderFilter)j))
 		{
 			static char temp [256];
-			sprintf(temp, "%d=%s%c ", i, GetFilterName((RenderFilter)i), i!=NUM_FILTERS-1?',':' ');
+			sprintf(temp, "%d=%s%c ", j, GetFilterName((RenderFilter)j), j!=NUM_FILTERS-1?',':' ');
 			strcat(filterString2, temp);
 		}
 	}

@@ -200,9 +200,9 @@
 	#include "win32/wsnes9x.h"
 
 	#define ioctl ioctlsocket
-	#define close(h) if(h){closesocket(h);}
-	#define read(a,b,c) recv(a, b, c, 0)
-	#define write(a,b,c) send(a, b, c, 0)
+	#define SOCKET_CLOSE(h) if(h){closesocket(h);}
+	#define SOCKET_READ(a,b,c) recv(a, b, c, 0)
+	#define SOCKET_WRITE(a,b,c) send(a, b, c, 0)
 #else
 	#include <unistd.h>
 	#include <sys/time.h>
@@ -979,8 +979,8 @@ void S9xNPResetJoypadReadPos ()
     NetPlay.JoypadReadInd = NP_JOYPAD_HIST_SIZE - 1;
     for (int h = 0; h < NP_JOYPAD_HIST_SIZE; h++)
         memset ((void *) &NetPlay.Joypads [h], 0, sizeof (NetPlay.Joypads [0]));
-    for (int h = 0; h < NP_JOYPAD_HIST_SIZE; h++)
-        memset ((void *) &NetPlay.JoypadsReady [h], 0, sizeof (NetPlay.JoypadsReady [0]));
+    for (int i = 0; i < NP_JOYPAD_HIST_SIZE; i++)
+        memset ((void *) &NetPlay.JoypadsReady [i], 0, sizeof (NetPlay.JoypadsReady [0]));
 }
 
 bool8 S9xNPSendJoypadUpdate (uint32 joypad)
@@ -1006,7 +1006,7 @@ bool8 S9xNPSendJoypadUpdate (uint32 joypad)
 
 void S9xNPDisconnect ()
 {
-    close (NetPlay.Socket);
+    SOCKET_CLOSE (NetPlay.Socket);
     NetPlay.Socket = -1;
     NetPlay.Connected = FALSE;
     Settings.NetPlay = FALSE;
@@ -1031,7 +1031,7 @@ bool8 S9xNPSendData (int socket, const uint8 *data, int length)
         if (num_bytes > 512)
             num_bytes = 512;
 
-	int sent = write (socket, (char *) ptr, num_bytes);
+	int sent = SOCKET_WRITE (socket, (char *) ptr, num_bytes);
 	if (sent < 0)
 	{
 	    if (errno == EINTR
@@ -1084,7 +1084,7 @@ bool8 S9xNPGetData (int socket, uint8 *data, int length)
         if (num_bytes > chunk)
             num_bytes = chunk;
 
-        int got = read (socket, (char *) ptr, num_bytes);
+        int got = SOCKET_READ (socket, (char *) ptr, num_bytes);
         if (got < 0)
         {
 	    if (errno == EINTR

@@ -190,15 +190,6 @@
 #include <windows.h>
 #include <io.h>
 
-#if (((defined(_MSC_VER) && _MSC_VER >= 1300)) || defined(__MINGW32__))
-	// both MINGW and VS.NET use fstream instead of fstream.h which is deprecated
-	#include <fstream>
-	using namespace std;
-#else
-	// for VC++ 6
-	#include <fstream.h>
-#endif
-
 #include "InputCustom.h"
 #include "wsnes9x.h"
 #include "wlanguage.h"

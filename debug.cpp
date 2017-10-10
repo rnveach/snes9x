@@ -2050,7 +2050,9 @@ static void debug_whats_used (void)
 	if (Memory.FillRAM[0x4200] & 0x80)
 		printf("V-blank NMI enabled, \n");
 
-	for (int i = 0; i < 8; i++)
+	int i;
+
+	for (i = 0; i < 8; i++)
 	{
 		if (missing.hdma_this_frame & (1 << i))
 		{
@@ -2063,7 +2065,7 @@ static void debug_whats_used (void)
 		}
 	}
 
-	for (int i = 0; i < 8; i++)
+	for (i = 0; i < 8; i++)
 	{
 		if (missing.dma_this_frame & (1 << i))
 		{
@@ -2078,7 +2080,7 @@ static void debug_whats_used (void)
 	       PPU.VMA.High  ? "Byte" : "Word",
 	       PPU.VMA.FullGraphicCount, PPU.VMA.Increment);
 
-	for (int i = 0; i < 4; i++)
+	for (i = 0; i < 4; i++)
 	{
 		printf("BG%d: VOffset:%d, HOffset:%d, W:%d, H:%d, TS:%d, BA:0x%04x, TA:0x%04X, \n",
 		       i, PPU.BG[i].VOffset, PPU.BG[i].HOffset,
@@ -2112,7 +2114,7 @@ static void debug_whats_used (void)
 
 	printf("Main screen (%s): ", s);
 
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (Memory.FillRAM[0x212c] & (1 << i))
 		{
@@ -2164,7 +2166,7 @@ static void debug_whats_used (void)
 
 	printf("Subscreen (%s): ", s);
 
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (Memory.FillRAM[0x212d] & (1 << i))
 		{
@@ -2217,7 +2219,7 @@ static void debug_whats_used (void)
 		else
 			printf(": ");
 
-		for (int i = 0; i < 6; i++)
+		for (i = 0; i < 6; i++)
 		{
 			if (Memory.FillRAM[0x2131] & (1 << i))
 			{
@@ -2255,7 +2257,7 @@ static void debug_whats_used (void)
 
 	printf("Window 1 (%d, %d, %02x, %02x): ", PPU.Window1Left, PPU.Window1Right, Memory.FillRAM[0x212e], Memory.FillRAM[0x212f]);
 
-	for (int i = 0; i < 6; i++)
+	for (i = 0; i < 6; i++)
 	{
 		if (PPU.ClipWindow1Enable[i])
 		{
@@ -2292,7 +2294,7 @@ static void debug_whats_used (void)
 
 	printf("Window 2 (%d, %d): ", PPU.Window2Left, PPU.Window2Right);
 
-	for (int i = 0; i < 6; i++)
+	for (i = 0; i < 6; i++)
 	{
 		if (PPU.ClipWindow2Enable[i])
 		{
@@ -2476,37 +2478,37 @@ static void debug_whats_missing (void)
 
 	printf("\n");
 
-	for (int i = 0; i < 8; i++)
+	for (int j = 0; j < 8; j++)
 	{
-		if (missing.hdma[i].used)
+		if (missing.hdma[j].used)
 		{
 			printf("HDMA %d 0x%02X%04X->0x21%02X %s, ",
-			       i, missing.hdma[i].abus_bank, missing.hdma[i].abus_address, missing.hdma[i].bbus_address,
-			       missing.hdma[i].indirect_address ? "indirect" : "absolute");
+			       j, missing.hdma[j].abus_bank, missing.hdma[j].abus_address, missing.hdma[j].bbus_address,
+			       missing.hdma[j].indirect_address ? "indirect" : "absolute");
 
-			if (missing.hdma[i].force_table_address_write)
+			if (missing.hdma[j].force_table_address_write)
 				printf("Forced address write, ");
 
-			if (missing.hdma[i].force_table_address_read)
+			if (missing.hdma[j].force_table_address_read)
 				printf("Current address read, ");
 
-			if (missing.hdma[i].line_count_write)
+			if (missing.hdma[j].line_count_write)
 				printf("Line count write, ");
 
-			if (missing.hdma[i].line_count_read)
+			if (missing.hdma[j].line_count_read)
 				printf("Line count read, ");
 
 			printf("\n");
 		}
 	}
 
-	for (int i = 0; i < 8; i++)
+	for (int k = 0; k < 8; k++)
 	{
-		if (missing.dma_channels & (1 << i))
+		if (missing.dma_channels & (1 << k))
 		{
 			printf("DMA %d [%d] 0x%02X%04X->0x21%02X Num: %d %s, \n",
-			       i, DMA[i].TransferMode, DMA[i].ABank, DMA[i].AAddress, DMA[i].BAddress, DMA[i].TransferBytes,
-			       DMA[i].AAddressFixed ? "fixed" : (DMA[i].AAddressDecrement ? "dec" : "inc"));
+			       k, DMA[k].TransferMode, DMA[k].ABank, DMA[k].AAddress, DMA[k].BAddress, DMA[k].TransferBytes,
+			       DMA[k].AAddressFixed ? "fixed" : (DMA[k].AAddressDecrement ? "dec" : "inc"));
 		}
 	}
 

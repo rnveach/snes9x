@@ -568,48 +568,48 @@ void S9xUnmapAllControls (void)
 		free(multis[i]);
 	multis.clear();
 
-	for (int i = 0; i < NUMCTLS + 1; i++)
-		pollmap[i].clear();
+	for (int j = 0; j < NUMCTLS + 1; j++)
+		pollmap[j].clear();
 
-	for (int i = 0; i < 8; i++)
+	for (int k = 0; k < 8; k++)
 	{
-		pseudopointer[i].x = 0;
-		pseudopointer[i].y = 0;
-		pseudopointer[i].H_adj = 0;
-		pseudopointer[i].V_adj = 0;
-		pseudopointer[i].H_var = 0;
-		pseudopointer[i].V_var = 0;
-		pseudopointer[i].mapped = false;
+		pseudopointer[k].x = 0;
+		pseudopointer[k].y = 0;
+		pseudopointer[k].H_adj = 0;
+		pseudopointer[k].V_adj = 0;
+		pseudopointer[k].H_var = 0;
+		pseudopointer[k].V_var = 0;
+		pseudopointer[k].mapped = false;
 
-		joypad[i].buttons  = 0;
-		joypad[i].turbos   = 0;
-		joypad[i].turbo_ct = 0;
+		joypad[k].buttons  = 0;
+		joypad[k].turbos   = 0;
+		joypad[k].turbo_ct = 0;
 	}
 
-	for (int i = 0; i < 2; i++)
+	for (int l = 0; l < 2; l++)
 	{
-		mouse[i].old_x = mouse[i].old_y = 0;
-		mouse[i].cur_x = mouse[i].cur_y = 0;
-		mouse[i].buttons = 1;
-		mouse[i].ID = InvalidControlID;
+		mouse[l].old_x = mouse[l].old_y = 0;
+		mouse[l].cur_x = mouse[l].cur_y = 0;
+		mouse[l].buttons = 1;
+		mouse[l].ID = InvalidControlID;
 
-		if (!(mouse[i].crosshair.set & 1))
-			mouse[i].crosshair.img = 0; // no image for mouse because its only logical position is game-specific, not known by the emulator
-		if (!(mouse[i].crosshair.set & 2))
-			mouse[i].crosshair.fg  = 5;
-		if (!(mouse[i].crosshair.set & 4))
-			mouse[i].crosshair.bg  = 1;
+		if (!(mouse[l].crosshair.set & 1))
+			mouse[l].crosshair.img = 0; // no image for mouse because its only logical position is game-specific, not known by the emulator
+		if (!(mouse[l].crosshair.set & 2))
+			mouse[l].crosshair.fg  = 5;
+		if (!(mouse[l].crosshair.set & 4))
+			mouse[l].crosshair.bg  = 1;
 
-		justifier.x[i] = justifier.y[i] = 0;
-		justifier.offscreen[i] = 0;
-		justifier.ID[i] = InvalidControlID;
+		justifier.x[l] = justifier.y[l] = 0;
+		justifier.offscreen[l] = 0;
+		justifier.ID[l] = InvalidControlID;
 
-		if (!(justifier.crosshair[i].set & 1))
-			justifier.crosshair[i].img = 4;
-		if (!(justifier.crosshair[i].set & 2))
-			justifier.crosshair[i].fg  = i ? 14 : 12;
-		if (!(justifier.crosshair[i].set & 4))
-			justifier.crosshair[i].bg  = 1;
+		if (!(justifier.crosshair[l].set & 1))
+			justifier.crosshair[l].img = 4;
+		if (!(justifier.crosshair[l].set & 2))
+			justifier.crosshair[l].fg  = i ? 14 : 12;
+		if (!(justifier.crosshair[l].set & 4))
+			justifier.crosshair[l].bg  = 1;
 	}
 
 	justifier.buttons = 0;
@@ -900,6 +900,7 @@ void S9xReportControllers (void)
 	for (int port = 0; port < 2; port++)
 	{
 		c += sprintf(c, "Port %d: ", port + 1);
+		int i;
 
 		switch (newcontrollers[port])
 		{
@@ -909,7 +910,7 @@ void S9xReportControllers (void)
 
 			case MP5:
 				c += sprintf(c, "MP5 with pads");
-				for (int i = 0; i < 4; i++)
+				for (i = 0; i < 4; i++)
 				{
 					if (mp5[port].pads[i] == NONE)
 						c += sprintf(c, " <none>. ");
@@ -2864,13 +2865,15 @@ void S9xSetJoypadLatch (bool latch)
 
 		for (int n = 0; n < 2; n++)
 		{
-			for (int j = 0; j < 2; j++)
+			int j, k;
+
+			for (j = 0; j < 2; j++)
 				read_idx[n][j] = 0;
 
 			switch (i = curcontrollers[n])
 			{
 				case MP5:
-					for (int j = 0, k = mp5[n].pads[j]; j < 4; k = mp5[n].pads[++j])
+					for (j = 0, k = mp5[n].pads[j]; j < 4; k = mp5[n].pads[++j])
 					{
 						if (k == NONE)
 							continue;
@@ -3151,12 +3154,12 @@ void S9xDoAutoJoypad (void)
 void S9xControlEOF (void)
 {
 	struct crosshair	*c;
-	int					i, j;
+	int					i, j, n;
 
 	PPU.GunVLatch = 1000; // i.e., never latch
 	PPU.GunHLatch = 0;
 
-	for (int n = 0; n < 2; n++)
+	for (n = 0; n < 2; n++)
 	{
 		switch (i = curcontrollers[n])
 		{
@@ -3246,7 +3249,7 @@ void S9xControlEOF (void)
 		}
 	}
 
-	for (int n = 0; n < 8; n++)
+	for (n = 0; n < 8; n++)
 	{
 		if (!pseudopointer[n].mapped)
 			continue;
@@ -3455,13 +3458,15 @@ void S9xControlPreSaveState (struct SControlSnapshot *s)
 	memset(s, 0, sizeof(*s));
 	s->ver = 3;
 
-	for (int j = 0; j < 2; j++)
+	int j;
+
+	for (j = 0; j < 2; j++)
 	{
 		s->port1_read_idx[j] = read_idx[0][j];
 		s->port2_read_idx[j] = read_idx[1][j];
 	}
 
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		s->mouse_speed[j] = (mouse[j].buttons & 0x30) >> 4;
 
 	s->justifier_select = ((justifier.buttons & JUSTIFIER_SELECT) ? 1 : 0);
@@ -3470,10 +3475,10 @@ void S9xControlPreSaveState (struct SControlSnapshot *s)
 
 	int	i = 0;
 
-	for (int j = 0; j < 8; j++)
+	for (j = 0; j < 8; j++)
 		COPY(joypad[j].buttons);
 
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 	{
 		COPY(mouse[j].delta_x);
 		COPY(mouse[j].delta_y);
@@ -3490,15 +3495,15 @@ void S9xControlPreSaveState (struct SControlSnapshot *s)
 	COPY(superscope.next_buttons);
 	COPY(superscope.read_buttons);
 
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		COPY(justifier.x[j]);
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		COPY(justifier.y[j]);
 	COPY(justifier.buttons);
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		COPY(justifier.offscreen[j]);
 
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		for (int k = 0; k < 2; k++)
 			COPY(mp5[j].pads[k]);
 
@@ -3520,13 +3525,15 @@ void S9xControlPostLoadState (struct SControlSnapshot *s)
 		curcontrollers[0] = mp5[0].pads[0];
 	}
 
-	for (int j = 0; j < 2; j++)
+	int j;
+
+	for (j = 0; j < 2; j++)
 	{
 		read_idx[0][j] = s->port1_read_idx[j];
 		read_idx[1][j] = s->port2_read_idx[j];
 	}
 
-	for (int j = 0; j < 2; j++)
+	for (j = 0; j < 2; j++)
 		mouse[j].buttons |= (s->mouse_speed[j] & 3) << 4;
 
 	if (s->justifier_select & 1)
@@ -3542,10 +3549,10 @@ void S9xControlPostLoadState (struct SControlSnapshot *s)
 
 		int	i = 0;
 
-		for (int j = 0; j < 8; j++)
+		for (j = 0; j < 8; j++)
 			COPY(joypad[j].buttons);
 
-		for (int j = 0; j < 2; j++)
+		for (j = 0; j < 2; j++)
 		{
 			COPY(mouse[j].delta_x);
 			COPY(mouse[j].delta_y);
@@ -3562,14 +3569,14 @@ void S9xControlPostLoadState (struct SControlSnapshot *s)
 		COPY(superscope.next_buttons);
 		COPY(superscope.read_buttons);
 
-		for (int j = 0; j < 2; j++)
+		for (j = 0; j < 2; j++)
 			COPY(justifier.x[j]);
-		for (int j = 0; j < 2; j++)
+		for (j = 0; j < 2; j++)
 			COPY(justifier.y[j]);
 		COPY(justifier.buttons);
-		for (int j = 0; j < 2; j++)
+		for (j = 0; j < 2; j++)
 			COPY(justifier.offscreen[j]);
-		for (int j = 0; j < 2; j++)
+		for (j = 0; j < 2; j++)
 			for (int k = 0; k < 2; k++)
 				COPY(mp5[j].pads[k]);
 

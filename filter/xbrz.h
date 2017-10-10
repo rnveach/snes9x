@@ -39,7 +39,7 @@ http://board.byuu.org/viewtopic.php?f=10&t=2248
 - support scaling up to 6xBRZ
 */
 
-enum class ColorFormat //from high bits -> low bits, 8 bit per channel
+enum ColorFormat //from high bits -> low bits, 8 bit per channel
 {
     RGB,  //8 bit for each red, green, blue, upper 8 bits unused
     ARGB, //including alpha channel, BGRA byte order on little-endian machines

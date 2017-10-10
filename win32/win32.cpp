@@ -207,6 +207,9 @@
 
 #include <math.h>
 
+// #include <ObjBase.h>
+WINOLEAPI  CoInitializeEx(IN LPVOID pvReserved, IN DWORD dwCoInit);
+
 BYTE *ScreenBuf = NULL;
 BYTE *ScreenBuffer = NULL;
 

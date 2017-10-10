@@ -240,7 +240,7 @@ void ConfigFile::LoadFile(Stream *r, const char *name){
     bool eof;
 
     line=line2=0;
-    section.clear();
+    section.empty();
     do {
         line=line2++;
         l=r->getline(eof);
@@ -306,7 +306,7 @@ bool ConfigFile::SaveTo(const char *filename){
     }
 
 	curConfigFile = this;
-    section.clear();
+    section.empty();
     set<ConfigEntry, ConfigEntry::line_less> tmp;
     fprintf(fp, "# Config file output by snes9x\n");
     time_t t=time(NULL);
@@ -370,7 +370,7 @@ bool ConfigFile::SaveTo(const char *filename){
 						len3+=maxLeftDiv-i->key.length();
 						for(unsigned int j=i->key.length()+len3+3;j<maxKeyLen;j++) fputc(' ',fp);
 						fprintf(fp, "%s", i->key.c_str());
-						for(int j=0;j<len3-len3sub;j++) fputc(' ',fp);
+						for(int k=0;k<len3-len3sub;k++) fputc(' ',fp);
 						fprintf(fp, " = %s", o.c_str());
 					} else
 						fprintf(fp, "%s = %s", i->key.c_str(), o.c_str());

@@ -375,10 +375,10 @@ static void FxReset (struct FxInfo_s *psFxInfo)
 	}
 
 	// Make RAM bank table
-	for (int i = 0; i < 4; i++)
+	for (int j = 0; j < 4; j++)
 	{
-		GSU.apvRamBank[i] = &GSU.pvRam[(i % GSU.nRamBanks) << 16];
-		GSU.apvRomBank[0x70 + i] = GSU.apvRamBank[i];
+		GSU.apvRamBank[j] = &GSU.pvRam[(j % GSU.nRamBanks) << 16];
+		GSU.apvRomBank[0x70 + j] = GSU.apvRamBank[j];
 	}
 
 	// Start with a nop in the pipe
@@ -594,6 +594,8 @@ void fx_computeScreenPointers (void)
 	{
 		GSU.vSCBRDirty = FALSE;
 
+		int i;
+
 		// Make a list of pointers to the start of each screen column
 		switch (GSU.vScreenHeight)
 		{
@@ -601,7 +603,7 @@ void fx_computeScreenPointers (void)
 				switch (GSU.vMode)
 				{
 					case 0:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 4);
 							GSU.x[i] = i <<  8;
@@ -610,7 +612,7 @@ void fx_computeScreenPointers (void)
 						break;
 
 					case 1:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 5);
 							GSU.x[i] = i <<  9;
@@ -620,7 +622,7 @@ void fx_computeScreenPointers (void)
 
 					case 2:
 					case 3:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 6);
 							GSU.x[i] = i << 10;
@@ -635,7 +637,7 @@ void fx_computeScreenPointers (void)
 				switch (GSU.vMode)
 				{
 					case 0:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 4);
 							GSU.x[i] = (i <<  8) + (i << 6);
@@ -644,7 +646,7 @@ void fx_computeScreenPointers (void)
 						break;
 
 					case 1:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 5);
 							GSU.x[i] = (i <<  9) + (i << 7);
@@ -654,7 +656,7 @@ void fx_computeScreenPointers (void)
 
 					case 2:
 					case 3:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 6);
 							GSU.x[i] = (i << 10) + (i << 8);
@@ -669,7 +671,7 @@ void fx_computeScreenPointers (void)
 				switch (GSU.vMode)
 				{
 					case 0:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 4);
 							GSU.x[i] = (i <<  8) + (i << 7);
@@ -678,7 +680,7 @@ void fx_computeScreenPointers (void)
 						break;
 
 					case 1:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 5);
 							GSU.x[i] = (i <<  9) + (i << 8);
@@ -688,7 +690,7 @@ void fx_computeScreenPointers (void)
 
 					case 2:
 					case 3:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + (i << 6);
 							GSU.x[i] = (i << 10) + (i << 9);
@@ -703,7 +705,7 @@ void fx_computeScreenPointers (void)
 				switch (GSU.vMode)
 				{
 					case 0:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + ((i & 0x10) <<  9) + ((i & 0xf) <<  8);
 							GSU.x[i] = ((i & 0x10) <<  8) + ((i & 0xf) << 4);
@@ -712,7 +714,7 @@ void fx_computeScreenPointers (void)
 						break;
 
 					case 1:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + ((i & 0x10) << 10) + ((i & 0xf) <<  9);
 							GSU.x[i] = ((i & 0x10) <<  9) + ((i & 0xf) << 5);
@@ -722,7 +724,7 @@ void fx_computeScreenPointers (void)
 
 					case 2:
 					case 3:
-						for (int i = 0; i < 32; i++)
+						for (i = 0; i < 32; i++)
 						{
 							GSU.apvScreen[i] = GSU.pvScreenBase + ((i & 0x10) << 11) + ((i & 0xf) << 10);
 							GSU.x[i] = ((i & 0x10) << 10) + ((i & 0xf) << 6);

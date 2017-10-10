@@ -221,7 +221,7 @@ class fStream : public Stream
 
 #ifdef UNZIP_SUPPORT
 
-#include "unzip.h"
+#include "unzip/unzip.h"
 
 #define unz_BUFFSIZ	1024
 

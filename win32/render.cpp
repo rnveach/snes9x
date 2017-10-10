@@ -299,9 +299,10 @@ TRenderMethod FilterToMethod(RenderFilter filterID)
         case FILTER_SUPEREAGLE: return RenderSuperEagle;
         case FILTER_SUPER2XSAI: return RenderSuper2xSaI;
         case FILTER_2XSAI:      return Render2xSaI;
-        case FILTER_HQ2X:       return RenderHQ2X<FILTER_HQ2X>;
-        case FILTER_HQ2XS:      return RenderHQ2X<FILTER_HQ2XS>;
-        case FILTER_HQ2XBOLD:   return RenderHQ2X<FILTER_HQ2XBOLD>;
+		// TODO
+        //case FILTER_HQ2X:       return RenderHQ2X<FILTER_HQ2X>;
+        //case FILTER_HQ2XS:      return RenderHQ2X<FILTER_HQ2XS>;
+        //case FILTER_HQ2XBOLD:   return RenderHQ2X<FILTER_HQ2XBOLD>;
         case FILTER_EPXA:       return RenderEPXA;
         case FILTER_EPXB:       return RenderEPXB;
         case FILTER_EPXC:       return RenderEPXC;
@@ -309,9 +310,10 @@ TRenderMethod FilterToMethod(RenderFilter filterID)
         case FILTER_SIMPLE3X:   return RenderSimple3X;
         case FILTER_TVMODE3X:   return RenderTVMode3X;
         case FILTER_DOTMATRIX3X:return RenderDotMatrix3X;
-        case FILTER_HQ3X:       return RenderHQ3X<FILTER_HQ3X>;
-        case FILTER_HQ3XS:      return RenderHQ3X<FILTER_HQ3XS>;
-        case FILTER_HQ3XBOLD:   return RenderHQ3X<FILTER_HQ3XBOLD>;
+		// TODO
+        //case FILTER_HQ3X:       return RenderHQ3X<FILTER_HQ3X>;
+        //case FILTER_HQ3XS:      return RenderHQ3X<FILTER_HQ3XS>;
+        //case FILTER_HQ3XBOLD:   return RenderHQ3X<FILTER_HQ3XBOLD>;
         case FILTER_LQ3XBOLD:   return RenderLQ3XB;
         case FILTER_EPX3:       return RenderEPX3;
         case FILTER_3XBRZ:      return Render3xBRZ;

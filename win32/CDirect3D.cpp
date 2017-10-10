@@ -233,8 +233,6 @@ CDirect3D::CDirect3D()
 	shaderTimer = 1.0f;
 	shaderTimeStart = 0;
 	shaderTimeElapsed = 0;
-	frameCount = 0;
-	cgContext = NULL;
 	cgAvailable = false;
 	cgShader = NULL;
 	vertexDeclaration = NULL;
@@ -299,15 +297,6 @@ bool CDirect3D::Initialize(HWND hWnd)
 
 	cgAvailable = loadCgFunctions();
 
-	if(cgAvailable) {
-		cgContext = cgCreateContext();
-		hr = cgD3D9SetDevice(pDevice);
-		if(FAILED(hr)) {
-			DXTRACE_ERR_MSGBOX(TEXT("Error setting cg device"), hr);
-		}
-		cgShader = new CD3DCG(cgContext,pDevice);
-	}
-
 	pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 	pDevice->SetRenderState( D3DRS_ZENABLE, FALSE);
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_BORDER);
@@ -327,17 +316,6 @@ void CDirect3D::DeInitialize()
 {
 	DestroyDrawSurface();
 	SetShader(NULL);
-
-	if(cgShader) {
-		delete cgShader;
-		cgShader = NULL;
-	}
-	if(cgContext) {
-		cgDestroyContext(cgContext);
-		cgContext = NULL;
-	}
-	if(cgAvailable)
-		cgD3D9SetDevice(NULL);
 
 	if(vertexBuffer) {
 		vertexBuffer->Release();
@@ -386,22 +364,10 @@ bool CDirect3D::SetShader(const TCHAR *file)
 
 void CDirect3D::checkForCgError(const char *situation)
 {
-	char buffer[4096];
-	CGerror error = cgGetError();
-	const char *string = cgGetErrorString(error);
-
-	if (error != CG_NO_ERROR) {
-		sprintf(buffer,
-			  "Situation: %s\n"
-			  "Error: %s\n\n"
-			  "Cg compiler output...\n", situation, string);
-		MessageBoxA(0, buffer,
-				  "Cg error", MB_OK|MB_ICONEXCLAMATION);
-		if (error == CG_COMPILER_ERROR) {
-			MessageBoxA(0, cgGetLastListing(cgContext),
-					  "Cg compilation error", MB_OK|MB_ICONEXCLAMATION);
-		}
-	}
+	if(!cgAvailable) {
+		MessageBox(NULL, TEXT("The CG runtime is unavailable, CG shaders will not run.\nConsult the snes9x readme for information on how to obtain the runtime."), TEXT("CG Error"),
+			MB_OK|MB_ICONEXCLAMATION);
+    }
 }
 
 bool CDirect3D::SetShaderCG(const TCHAR *file)
@@ -412,11 +378,6 @@ bool CDirect3D::SetShaderCG(const TCHAR *file)
 				MB_OK|MB_ICONEXCLAMATION);
         return false;
     }
-
-	if(!cgShader->LoadShader(file))
-		return false;
-
-	shader_type = D3D_SHADER_CG;
 
 	return true;
 }
@@ -502,11 +463,11 @@ bool CDirect3D::SetShaderHLSL(const TCHAR *file)
 		*folder=TEXT('\0');
 	SetCurrentDirectory(S9xGetDirectoryT(DEFAULT_DIR));
 
-	for(int i = 0; i < MAX_SHADER_TEXTURES; i++) {		
-		_stprintf(rubyLUTfileName, TEXT("%srubyLUT%d.png"), folder, i);
-		hr = D3DXCreateTextureFromFile(pDevice,rubyLUTfileName,&rubyLUT[i]);
+	for(int j = 0; j < MAX_SHADER_TEXTURES; j++) {		
+		_stprintf(rubyLUTfileName, TEXT("%srubyLUT%d.png"), folder, j);
+		hr = D3DXCreateTextureFromFile(pDevice,rubyLUTfileName,&rubyLUT[j]);
 		if FAILED(hr){
-			rubyLUT[i] = NULL;
+			rubyLUT[j] = NULL;
 		}
 	}
 
@@ -557,56 +518,7 @@ void CDirect3D::SetShaderVars(bool setMatrix)
 				effect->SetTexture( rubyLUTName, rubyLUT[i] );
 			}
 		}
-	}/* else if(shader_type == D3D_SHADER_CG) {
-
-		D3DXVECTOR2 videoSize;
-		D3DXVECTOR2 textureSize;
-		D3DXVECTOR2 outputSize;
-		float frameCnt;
-		videoSize.x = (float)afterRenderWidth;
-		videoSize.y = (float)afterRenderHeight;
-		textureSize.x = textureSize.y = (float)quadTextureSize;
-		outputSize.x = GUI.Stretch?(float)dPresentParams.BackBufferWidth:(float)afterRenderWidth;
-		outputSize.y = GUI.Stretch?(float)dPresentParams.BackBufferHeight:(float)afterRenderHeight;
-		frameCnt = (float)++frameCount;
-		videoSize = textureSize;
-
-#define setProgramUniform(program,varname,floats)\
-{\
-	CGparameter cgp = cgGetNamedParameter(program, varname);\
-	if(cgp)\
-		cgD3D9SetUniform(cgp,floats);\
-}\
-
-		setProgramUniform(cgFragmentProgram,"IN.video_size",&videoSize);
-		setProgramUniform(cgFragmentProgram,"IN.texture_size",&textureSize);
-		setProgramUniform(cgFragmentProgram,"IN.output_size",&outputSize);
-		setProgramUniform(cgFragmentProgram,"IN.frame_count",&frameCnt);
-
-		setProgramUniform(cgVertexProgram,"IN.video_size",&videoSize);
-		setProgramUniform(cgVertexProgram,"IN.texture_size",&textureSize);
-		setProgramUniform(cgVertexProgram,"IN.output_size",&outputSize);
-		setProgramUniform(cgVertexProgram,"IN.frame_count",&frameCnt);
-
-		if(setMatrix) {
-			D3DXMATRIX matWorld;
-			D3DXMATRIX matView;
-			D3DXMATRIX matProj;
-			D3DXMATRIX mvp;
-
-			pDevice->GetTransform(D3DTS_WORLD,&matWorld);
-			pDevice->GetTransform(D3DTS_VIEW,&matView);
-			pDevice->GetTransform(D3DTS_PROJECTION,&matProj);
-
-			mvp = matWorld * matView * matProj;
-			D3DXMatrixTranspose(&mvp,&mvp);
-
-			CGparameter cgpModelViewProj = cgGetNamedParameter(cgVertexProgram, "modelViewProj");
-
-			if(cgpModelViewProj)
-				cgD3D9SetUniformMatrix(cgpModelViewProj,&mvp);
-		}
-	}*/
+	}
 }
 
 /*  CDirect3D::Render
@@ -621,7 +533,6 @@ void CDirect3D::Render(SSurface Src)
 	RECT dstRect;
 	unsigned int newFilterScale;
 	D3DLOCKED_RECT lr;
-	D3DLOCKED_RECT lrConv;
 	HRESULT hr;
 
 	if(!init_done) return;
@@ -899,11 +810,6 @@ bool CDirect3D::ResetDevice()
 	//release prior to reset
 	DestroyDrawSurface();
 
-	if(cgAvailable) {
-		cgShader->OnLostDevice();
-		cgD3D9SetDevice(NULL);
-	}
-
 	if(effect)
 		effect->OnLostDevice();
 
@@ -935,11 +841,6 @@ bool CDirect3D::ResetDevice()
 
 	if(effect)
 		effect->OnResetDevice();
-
-	if(cgAvailable) {
-		cgD3D9SetDevice(pDevice);
-		cgShader->OnResetDevice();
-	}
 
 	pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 
@@ -1004,7 +905,7 @@ modeVector	-	pointer to the mode vector
 void CDirect3D::EnumModes(std::vector<dMode> *modeVector)
 {
 	D3DDISPLAYMODE d3dMode;
-	int modeCount,index;
+	int modeCount;
 	dMode mode;
 
 	if(!init_done)
@@ -1026,8 +927,8 @@ void CDirect3D::EnumModes(std::vector<dMode> *modeVector)
 
 	//enumerate 16bit modes
 	modeCount = pD3D->GetAdapterModeCount(D3DADAPTER_DEFAULT,D3DFMT_R5G6B5);
-	for(int i=0;i<modeCount;i++) {
-		if(pD3D->EnumAdapterModes(D3DADAPTER_DEFAULT,D3DFMT_R5G6B5,i,&d3dMode)==D3D_OK) {
+	for(int j=0;j<modeCount;j++) {
+		if(pD3D->EnumAdapterModes(D3DADAPTER_DEFAULT,D3DFMT_R5G6B5,j,&d3dMode)==D3D_OK) {
 			mode.width = d3dMode.Width;
 			mode.height = d3dMode.Height;
 			mode.rate = d3dMode.RefreshRate;

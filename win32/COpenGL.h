@@ -218,8 +218,6 @@ private:
 
 	bool pboFunctionsLoaded;
 
-	CGcontext cgContext;
-	CGprogram cgVertexProgram, cgFragmentProgram;
 	current_ogl_shader_type shader_type;
 	bool cgAvailable;
 

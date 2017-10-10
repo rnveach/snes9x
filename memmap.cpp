@@ -3230,17 +3230,17 @@ void CMemory::Map_SA1LoROMMap (void)
 	memmove((void *) SA1.WriteMap, (void *) WriteMap, sizeof(WriteMap));
 
 	// SA-1 Banks 00->3f and 80->bf
-	for (int c = 0x000; c < 0x400; c += 0x10)
+	for (int d = 0x000; d < 0x400; d += 0x10)
 	{
-		SA1.Map[c + 0] = SA1.Map[c + 0x800] = FillRAM + 0x3000;
-		SA1.Map[c + 1] = SA1.Map[c + 0x801] = (uint8 *) MAP_NONE;
-		SA1.WriteMap[c + 0] = SA1.WriteMap[c + 0x800] = FillRAM + 0x3000;
-		SA1.WriteMap[c + 1] = SA1.WriteMap[c + 0x801] = (uint8 *) MAP_NONE;
+		SA1.Map[d + 0] = SA1.Map[d + 0x800] = FillRAM + 0x3000;
+		SA1.Map[d + 1] = SA1.Map[d + 0x801] = (uint8 *) MAP_NONE;
+		SA1.WriteMap[d + 0] = SA1.WriteMap[d + 0x800] = FillRAM + 0x3000;
+		SA1.WriteMap[d + 1] = SA1.WriteMap[d + 0x801] = (uint8 *) MAP_NONE;
 	}
 
 	// SA-1 Banks 60->6f
-	for (int c = 0x600; c < 0x700; c++)
-		SA1.Map[c] = SA1.WriteMap[c] = (uint8 *) MAP_BWRAM_BITMAP;
+	for (int e = 0x600; e < 0x700; e++)
+		SA1.Map[e] = SA1.WriteMap[e] = (uint8 *) MAP_BWRAM_BITMAP;
 
 	BWRAM = SRAM;
 }
@@ -3275,17 +3275,17 @@ void CMemory::Map_GNEXTSA1LoROMMap (void)
 	memmove((void *) SA1.WriteMap, (void *) WriteMap, sizeof(WriteMap));
 
 	// SA-1 Banks 00->3f and 80->bf
-	for (int c = 0x000; c < 0x400; c += 0x10)
+	for (int d = 0x000; d < 0x400; d += 0x10)
 	{
-		SA1.Map[c + 0] = SA1.Map[c + 0x800] = FillRAM + 0x3000;
-		SA1.Map[c + 1] = SA1.Map[c + 0x801] = (uint8 *) MAP_NONE;
-		SA1.WriteMap[c + 0] = SA1.WriteMap[c + 0x800] = FillRAM + 0x3000;
-		SA1.WriteMap[c + 1] = SA1.WriteMap[c + 0x801] = (uint8 *) MAP_NONE;
+		SA1.Map[d + 0] = SA1.Map[d + 0x800] = FillRAM + 0x3000;
+		SA1.Map[d + 1] = SA1.Map[d + 0x801] = (uint8 *) MAP_NONE;
+		SA1.WriteMap[d + 0] = SA1.WriteMap[d + 0x800] = FillRAM + 0x3000;
+		SA1.WriteMap[d + 1] = SA1.WriteMap[d + 0x801] = (uint8 *) MAP_NONE;
 	}
 
 	// SA-1 Banks 60->6f
-	for (int c = 0x600; c < 0x700; c++)
-		SA1.Map[c] = SA1.WriteMap[c] = (uint8 *) MAP_BWRAM_BITMAP;
+	for (int e = 0x600; e < 0x700; e++)
+		SA1.Map[e] = SA1.WriteMap[e] = (uint8 *) MAP_BWRAM_BITMAP;
 
 	BWRAM = SRAM;
 }

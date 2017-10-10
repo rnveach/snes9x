@@ -217,15 +217,12 @@ private:
 		bool linearFilter;
         unsigned frameCounterMod;
         bool floatFbo;
-		CGprogram cgVertexProgram, cgFragmentProgram;
 		GLuint tex;
 		GLuint fbo;
 		xySize outputSize;
 		xySize textureSize;
 		GLfloat	texcoords[8];
-		_shaderPass()  {cgVertexProgram=NULL;
-					    cgFragmentProgram=NULL;
-						fbo=NULL;
+		_shaderPass()  {fbo=NULL;
 						tex=NULL;}
 	} shaderPass;
 	typedef struct _prevPass {
@@ -244,11 +241,8 @@ private:
 	typedef std::vector<shaderPass> glPassVector;
 	typedef std::vector<lookupTexture> glLutVector;
 	typedef std::deque<prevPass> glPrevDeque;
-	typedef std::vector<CGparameter> glAttribParams;
 	glPassVector shaderPasses;
 	glLutVector lookupTextures;
-	glPrevDeque prevPasses;
-	glAttribParams cgAttribParams;
 
 	bool fboFunctionsLoaded;
 	bool shaderLoaded;
@@ -260,7 +254,6 @@ private:
 	bool loadPngImage(const TCHAR *name, int &outWidth, int &outHeight, bool &outHasAlpha, GLubyte **outData);
 	bool loadTGA(const TCHAR *filename, STGA& tgaFile);
 
-	CGcontext cgContext;
 	unsigned int frameCnt;
 	static const GLfloat lut_coords[8];
 
@@ -273,7 +266,7 @@ private:
 	PFNGLACTIVETEXTUREPROC glClientActiveTexture;
 
 public:
-	CGLCG(CGcontext cgContext);
+	CGLCG();
 	~CGLCG(void);
 
 	bool LoadShader(const TCHAR *shaderFile);

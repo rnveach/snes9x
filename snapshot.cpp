@@ -1847,8 +1847,8 @@ int S9xUnfreezeFromStream (STREAM stream)
 			}
 
 			// black out what we might have missed
-			for (uint32 y = IPPU.RenderedScreenHeight; y < (uint32) (IMAGE_HEIGHT); y++)
-				memset(GFX.Screen + y * GFX.RealPPL, 0, GFX.RealPPL * 2);
+			for (uint32 z = IPPU.RenderedScreenHeight; z < (uint32) (IMAGE_HEIGHT); z++)
+				memset(GFX.Screen + z * GFX.RealPPL, 0, GFX.RealPPL * 2);
 
 			delete ssi;
 		}

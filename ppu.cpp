@@ -1832,7 +1832,9 @@ void S9xSoftResetPPU (void)
 
 	PPU.WRAM = 0;
 
-	for (int c = 0; c < 4; c++)
+	int c;
+
+	for (c = 0; c < 4; c++)
 	{
 		PPU.BG[c].SCBase = 0;
 		PPU.BG[c].HOffset = 0;
@@ -1849,7 +1851,7 @@ void S9xSoftResetPPU (void)
 	PPU.CGFLIPRead = 0;
 	PPU.CGADD = 0;
 
-	for (int c = 0; c < 256; c++)
+	for (c = 0; c < 256; c++)
 	{
 		IPPU.Red[c]   = (c & 7) << 2;
 		IPPU.Green[c] = ((c >> 3) & 7) << 2;
@@ -1857,7 +1859,7 @@ void S9xSoftResetPPU (void)
 		PPU.CGDATA[c] = IPPU.Red[c] | (IPPU.Green[c] << 5) | (IPPU.Blue[c] << 10);
 	}
 
-	for (int c = 0; c < 128; c++)
+	for (c = 0; c < 128; c++)
 	{
 		PPU.OBJ[c].HPos = 0;
 		PPU.OBJ[c].VPos = 0;
@@ -1926,7 +1928,7 @@ void S9xSoftResetPPU (void)
 	PPU.Window2Right = 0;
 	PPU.RecomputeClipWindows = TRUE;
 
-	for (int c = 0; c < 6; c++)
+	for (c = 0; c < 6; c++)
 	{
 		PPU.ClipCounts[c] = 0;
 		PPU.ClipWindowOverlapLogic[c] = CLIP_OR;
@@ -1953,7 +1955,7 @@ void S9xSoftResetPPU (void)
 	PPU.OpenBus1 = 0;
 	PPU.OpenBus2 = 0;
 
-	for (int c = 0; c < 2; c++)
+	for (c = 0; c < 2; c++)
 		memset(&IPPU.Clip[c], 0, sizeof(struct ClipData));
 	IPPU.ColorsChanged = TRUE;
 	IPPU.OBJChanged = TRUE;
@@ -1973,7 +1975,7 @@ void S9xSoftResetPPU (void)
 	IPPU.CurrentLine = 0;
 	IPPU.PreviousLine = 0;
 	IPPU.XB = NULL;
-	for (int c = 0; c < 256; c++)
+	for (c = 0; c < 256; c++)
 		IPPU.ScreenColors[c] = c;
 	IPPU.MaxBrightness = 0;
 	IPPU.RenderThisFrame = TRUE;
@@ -1987,7 +1989,7 @@ void S9xSoftResetPPU (void)
 
 	S9xFixColourBrightness();
 
-	for (int c = 0; c < 0x8000; c += 0x100)
+	for (c = 0; c < 0x8000; c += 0x100)
 		memset(&Memory.FillRAM[c], c >> 8, 0x100);
 	memset(&Memory.FillRAM[0x2100], 0, 0x100);
 	memset(&Memory.FillRAM[0x4200], 0, 0x100);

@@ -722,7 +722,7 @@ static void C4TransformLines (void)
 	ptr = Memory.C4RAM + 0xb02;
 	uint8	*ptr2 = Memory.C4RAM;
 
-	for (int i = READ_WORD(Memory.C4RAM + 0xb00); i > 0; i--, ptr += 2, ptr2 += 8)
+	for (int j = READ_WORD(Memory.C4RAM + 0xb00); j > 0; j--, ptr += 2, ptr2 += 8)
 	{
 		C4WFXVal  = READ_WORD(Memory.C4RAM + (ptr[0] << 4) + 1);
 		C4WFYVal  = READ_WORD(Memory.C4RAM + (ptr[0] << 4) + 5);
@@ -961,6 +961,7 @@ void S9xSetC4 (uint8 byte, uint16 Address)
 		}
 		else
 		{
+			int i;
 			switch (byte)
 			{
 				case 0x00: // Sprite
@@ -1211,7 +1212,7 @@ void S9xSetC4 (uint8 byte, uint16 Address)
 					if (Memory.C4RAM[0x1f4d] != 0x0e)
 						printf("$7f4d=%02x, expected 0e for command 5c %02x\n", Memory.C4RAM[0x1f4d], Memory.C4RAM[0x1f4d]);
 				#endif
-					for (int i = 0; i < 12 * 4; i++)
+					for (i = 0; i < 12 * 4; i++)
 						Memory.C4RAM[i] = C4TestPattern[i];
 					break;
 
