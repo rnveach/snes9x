@@ -974,8 +974,8 @@ void S9xNPResetJoypadReadPos ()
     NetPlay.JoypadReadInd = NP_JOYPAD_HIST_SIZE - 1;
     for (int h = 0; h < NP_JOYPAD_HIST_SIZE; h++)
         memset ((void *) &NetPlay.Joypads [h], 0, sizeof (NetPlay.Joypads [0]));
-    for (int h = 0; h < NP_JOYPAD_HIST_SIZE; h++)
-        memset ((void *) &NetPlay.JoypadsReady [h], 0, sizeof (NetPlay.JoypadsReady [0]));
+    for (int i = 0; i < NP_JOYPAD_HIST_SIZE; i++)
+        memset ((void *) &NetPlay.JoypadsReady [i], 0, sizeof (NetPlay.JoypadsReady [0]));
 }
 
 bool8 S9xNPSendJoypadUpdate (uint32 joypad)

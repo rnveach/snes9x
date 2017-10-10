@@ -250,10 +250,11 @@ class ConfigFile {
     bool Has(const char *key);
 
     class ConfigEntry {
-      protected:
-        int line;
+	public:
         std::string section;
         std::string key;
+      protected:
+        int line;
         std::string val;
         std::string comment;
 		mutable bool used;
@@ -282,7 +283,7 @@ class ConfigFile {
             int i;
             i=s.find_first_not_of(" \f\n\r\t\v");
             if(i==-1){
-                s.clear();
+                s.empty();
                 return;
             }
             if(i>0) s.erase(0, i); // erase leading whitespace
@@ -298,7 +299,7 @@ class ConfigFile {
             int i;
             i=s.find_first_not_of(" \f\n\r\t\v");
             if(i==-1){
-                s.clear();
+                s.empty();
                 return cmt;
             }
             if(i>0) s.erase(0, i); // erase leading whitespace

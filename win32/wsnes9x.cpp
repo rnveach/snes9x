@@ -228,6 +228,13 @@
 #include "wlanguage.h"
 #include "../language.h"
 
+#ifdef  _UNICODE
+#define _tstoi      _wtoi
+#else
+#define _tstoi      atoi
+#endif
+#define _stprintf_s(buffer, size, text, replacement) sprintf(buffer, text, replacement)
+
 //uncomment to find memory leaks, with a line in WinMain
 //#define CHECK_MEMORY_LEAKS
 
@@ -6969,6 +6976,7 @@ INT_PTR CALLBACK DlgFunky(HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 	static int prevAspectWidth;
 	static OutputMethod prevOutputMethod;
 	static TCHAR prevD3DShaderFile[MAX_PATH],prevOGLShaderFile[MAX_PATH];
+	int filter, hiResPos;
 
 	switch(msg)
 	{
@@ -7087,12 +7095,12 @@ INT_PTR CALLBACK DlgFunky(HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 		SendDlgItemMessage(hDlg,IDC_OUTPUTMETHOD,CB_ADDSTRING,0,(LPARAM)TEXT("OpenGL"));
 		SendDlgItemMessage(hDlg,IDC_OUTPUTMETHOD,CB_SETCURSEL,(WPARAM)GUI.outputMethod,0);
 		// add all the GUI.Scale filters to the combo box
-		for(int filter = 0 ; filter < (int)NUM_FILTERS ; filter++)
+		for(filter = 0 ; filter < (int)NUM_FILTERS ; filter++)
 		{
 			strcpy(temp,GetFilterName((RenderFilter)filter));
 			SendDlgItemMessageA(hDlg,IDC_FILTERBOX,CB_ADDSTRING,0,(LPARAM) (LPCTSTR)temp);
 		}
-		for(int filter = 0, hiResPos = 0 ; filter < (int)NUM_FILTERS ; filter++)
+		for(filter = 0, hiResPos = 0 ; filter < (int)NUM_FILTERS ; filter++)
 		{
 			if(GetFilterHiResSupport((RenderFilter)filter))
 			{
@@ -7859,8 +7867,8 @@ static void set_hotkeyinfo(HWND hDlg)
 			_stprintf(temp, TEXT("Select Slot %d"), i);
 			SetDlgItemText(hDlg,IDC_LABEL_HK1+i,temp);
 		}
-		for(int i = 10 ; i < 13 ; i++)
-			SetDlgItemText(hDlg,IDC_LABEL_HK1+i,INPUTCONFIG_LABEL_UNUSED);
+		for(int j = 10 ; j < 13 ; j++)
+			SetDlgItemText(hDlg,IDC_LABEL_HK1+j,INPUTCONFIG_LABEL_UNUSED);
 
 		break;
 	}

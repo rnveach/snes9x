@@ -273,9 +273,9 @@ bool8 S9xGraphicsInit (void)
 
 	// Lookup table for 1/2 color subtraction
 	ZeroMemory(GFX.ZERO, 0x10000 * sizeof(uint16));
-	for (uint32 r = 0; r <= MAX_RED; r++)
+	for (uint32 s = 0; s <= MAX_RED; s++)
 	{
-		uint32	r2 = r;
+		uint32	r2 = s;
 		if (r2 & 0x10)
 			r2 &= ~0x10;
 		else
@@ -297,8 +297,8 @@ bool8 S9xGraphicsInit (void)
 				else
 					b2 = 0;
 
-				GFX.ZERO[BUILD_PIXEL2(r, g, b)] = BUILD_PIXEL2(r2, g2, b2);
-				GFX.ZERO[BUILD_PIXEL2(r, g, b) & ~ALPHA_BITS_MASK] = BUILD_PIXEL2(r2, g2, b2);
+				GFX.ZERO[BUILD_PIXEL2(s, g, b)] = BUILD_PIXEL2(r2, g2, b2);
+				GFX.ZERO[BUILD_PIXEL2(s, g, b) & ~ALPHA_BITS_MASK] = BUILD_PIXEL2(r2, g2, b2);
 			}
 		}
 	}

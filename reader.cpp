@@ -180,7 +180,7 @@
 
 #include <string>
 #ifdef UNZIP_SUPPORT
-#include "unzip.h"
+#include "unzip/unzip.h"
 #endif
 #include "snes9x.h"
 #include "reader.h"
@@ -218,7 +218,7 @@ std::string Reader::getline (bool &eof)
 	std::string	ret;
 
 	eof = false;
-	ret.clear();
+	ret.empty();
 
 	do
 	{

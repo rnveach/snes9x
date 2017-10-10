@@ -360,9 +360,9 @@ void S9xLoadConfigFiles (char **argv, int argc)
 	else
 		fprintf(stderr, "Skipping standard config files.\n");
 
-	for (int i = 0; i < argc - 1; i++)
-		if (!strcasecmp(argv[i], "-conf"))
-			try_load_config_file(argv[++i], conf);
+	for (int j = 0; j < argc - 1; j++)
+		if (!strcasecmp(argv[j], "-conf"))
+			try_load_config_file(argv[++j], conf);
 
 	// Parse config file here
 

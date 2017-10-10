@@ -306,10 +306,10 @@ static void S9xSetSA1MemMap (uint32 which1, uint8 map)
 			Memory.Map[start  + i] = SA1.Map[start  + i] = block;
 	}
 
-	for (int c = 0; c < 0x200; c += 16)
+	for (int d = 0; d < 0x200; d += 16)
 	{
-		uint8	*block = &Memory.ROM[(map & 7) * 0x100000 + (c << 11) - 0x8000];
-		for (int i = c + 8; i < c + 16; i++)
+		uint8	*block = &Memory.ROM[(map & 7) * 0x100000 + (d << 11) - 0x8000];
+		for (int i = d + 8; i < d + 16; i++)
 			Memory.Map[start2 + i] = SA1.Map[start2 + i] = block;
 	}
 }
@@ -710,8 +710,8 @@ void S9xSetSA1 (uint8 byte, uint32 address)
 				case 2: // cumulative sum
 				default:
 					SA1.sum += (int16) SA1.op1 * (int16) SA1.op2;
-					SA1.overflow = (SA1.sum >= (1ULL << 40));
-					SA1.sum &= (1ULL << 40) - 1;
+					SA1.overflow = (SA1.sum >= (((uint64)1) << 40));
+					SA1.sum &= (((uint64)1) << 40) - 1;
 					SA1.op2 = 0;
 					break;
 			}
@@ -749,10 +749,12 @@ static void S9xSA1CharConv2 (void)
 	uint8	*p             = &Memory.FillRAM[0x3000] + (dest & 0x7ff) + offset * bytes_per_char;
 	uint8	*q             = &Memory.ROM[CMemory::MAX_ROM_SIZE - 0x10000] + offset * 64;
 
+	int l;
+
 	switch (depth)
 	{
 		case 2:
-			for (int l = 0; l < 8; l++, q += 8)
+			for (l = 0; l < 8; l++, q += 8)
 			{
 				for (int b = 0; b < 8; b++)
 				{
@@ -767,7 +769,7 @@ static void S9xSA1CharConv2 (void)
 			break;
 
 		case 4:
-			for (int l = 0; l < 8; l++, q += 8)
+			for (l = 0; l < 8; l++, q += 8)
 			{
 				for (int b = 0; b < 8; b++)
 				{
@@ -784,7 +786,7 @@ static void S9xSA1CharConv2 (void)
 			break;
 
 		case 8:
-			for (int l = 0; l < 8; l++, q += 8)
+			for (l = 0; l < 8; l++, q += 8)
 			{
 				for (int b = 0; b < 8; b++)
 				{

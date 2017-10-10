@@ -391,10 +391,11 @@ bool8 S9xDoDMA (uint8 Channel)
 				depth, count, bytes_per_char, bytes_per_line, num_chars, char_line_bytes);
 		#endif
 
+			int32 i;
 			switch (depth)
 			{
 				case 2:
-					for (int32 i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
+					for (i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
 					{
 						uint8	*line = base + (num_chars - char_count) * 2;
 						for (uint32 j = 0; j < char_count && p - buffer < count; j++, line += 2)
@@ -423,7 +424,7 @@ bool8 S9xDoDMA (uint8 Channel)
 					break;
 
 				case 4:
-					for (int32 i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
+					for (i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
 					{
 						uint8	*line = base + (num_chars - char_count) * 4;
 						for (uint32 j = 0; j < char_count && p - buffer < count; j++, line += 4)
@@ -454,7 +455,7 @@ bool8 S9xDoDMA (uint8 Channel)
 					break;
 
 				case 8:
-					for (int32 i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
+					for (i = 0; i < count; i += inc_sa1, base += char_line_bytes, inc_sa1 = char_line_bytes, char_count = num_chars)
 					{
 						uint8	*line = base + (num_chars - char_count) * 8;
 						for (uint32 j = 0; j < char_count && p - buffer < count; j++, line += 8)

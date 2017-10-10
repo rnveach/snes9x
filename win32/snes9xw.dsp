@@ -128,27 +128,11 @@ LINK32=link.exe
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=..\2xsai.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\3d.h
 # End Source File
 # Begin Source File
 
 SOURCE=..\65c816.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\apudebug.cpp
 # End Source File
 # Begin Source File
 
@@ -256,10 +240,6 @@ SOURCE=..\crosshairs.cpp
 # Begin Source File
 
 SOURCE=..\crosshairs.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\data.cpp
 # End Source File
 # Begin Source File
 
@@ -475,14 +455,6 @@ SOURCE=..\seta018.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\snaporig.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\snaporig.h
-# End Source File
-# Begin Source File
-
 SOURCE=..\snapshot.cpp
 # End Source File
 # Begin Source File
@@ -496,26 +468,6 @@ SOURCE=..\snes9x.cpp
 # Begin Source File
 
 SOURCE=..\snes9x.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\sound.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\soundux.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\soundux.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\spc700.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\spc700.h
 # End Source File
 # Begin Source File
 
@@ -547,27 +499,11 @@ SOURCE=..\tile.h
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\auxmath.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\auxmath.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\AVIOutput.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\AVIOutput.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\directx.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\DirectX.h
 # End Source File
 # Begin Source File
 
@@ -882,9 +818,5 @@ SOURCE=.\rsrc\rt_manif.bin
 SOURCE=.\rsrc\snes9x.rc
 # End Source File
 # End Group
-# Begin Source File
-
-SOURCE=.\snes9x.cfg
-# End Source File
 # End Target
 # End Project

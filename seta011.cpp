@@ -262,13 +262,15 @@ void S9xSetST011 (uint32 Address, uint8 Byte)
 		ST011.waiting4command = true;
 		ST011.out_index       = 0;
 
+		int lcv;
+
 		switch (ST011.command)
 		{
 			// unknown: download playboard
 			case 0x01:
 				// 9x9 board data: top to bottom, left to right
 				// Values represent piece types and ownership
-				for (int lcv = 0; lcv < 9; lcv++)
+				for (lcv = 0; lcv < 9; lcv++)
 					memcpy(board[lcv], ST011.parameters + lcv * 10, 9 * 1);
 				break;
 
