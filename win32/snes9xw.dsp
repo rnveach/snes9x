@@ -44,8 +44,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /YX /FD /c
-# ADD CPP /nologo /G6 /Zp4 /MT /W3 /O2 /Ob2 /I "..\..\zlib" /I "..\\" /I "..\..\FMOD\api\inc" /D "NDEBUG" /D "HAVE_LIBPNG" /D "SPC700_C" /D "JMA_SUPPORT" /D "SDD1_DECOMP" /D "CORRECT_VRAM_READS" /D "SPC700_SHUTDOWN" /D "CPU_SHUTDOWN" /D "ZLIB" /D "VAR_CYCLES" /D "UNZIP_SUPPORT" /D "EXECUTE_SUPERFX_PER_LINE" /D "__WIN32__" /D "__MSC__" /D "FMOD_SUPPORT" /D "NEW_COLOUR_BLENDING" /D "USE_OPENGL" /FD /c
-# SUBTRACT CPP /Fr
+# ADD CPP /nologo /G6 /Zp4 /MT /W3 /O2 /Ob2 /I "..\..\zlib" /I "..\\" /I "..\..\FMOD\api\inc" /D "NDEBUG" /D "HAVE_LIBPNG" /D "SPC700_C" /D "JMA_SUPPORT" /D "SDD1_DECOMP" /D "CORRECT_VRAM_READS" /D "SPC700_SHUTDOWN" /D "CPU_SHUTDOWN" /D "ZLIB" /D "VAR_CYCLES" /D "UNZIP_SUPPORT" /D "EXECUTE_SUPERFX_PER_LINE" /D "__WIN32__" /D "__MSC__" /D "FMOD_SUPPORT" /D "NEW_COLOUR_BLENDING" /D "USE_OPENGL" /Fr /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /o /win32 "NUL"
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /o /win32 "NUL"
 # ADD BASE RSC /l 0x413 /d "NDEBUG"
@@ -399,14 +398,6 @@ SOURCE=..\ppu.cpp
 # Begin Source File
 
 SOURCE=..\ppu.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\reader.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\reader.h
 # End Source File
 # Begin Source File
 
@@ -968,6 +959,18 @@ SOURCE=..\filter\snes_ntsc_config.h
 
 SOURCE=..\filter\snes_ntsc_impl.h
 # End Source File
+# Begin Source File
+
+SOURCE="..\filter\xbrz-config.h"
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\xbrz.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\filter\xbrz.h
+# End Source File
 # End Group
 # Begin Group "APU"
 
@@ -1014,39 +1017,7 @@ SOURCE=..\apu\ring_buffer.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\apu\SNES_SPC.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SNES_SPC.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SNES_SPC_misc.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SNES_SPC_state.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=..\apu\SPC_CPU.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SPC_DSP.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SPC_DSP.h
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SPC_Filter.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=..\apu\SPC_Filter.h
 # End Source File
 # End Group
 # End Target
