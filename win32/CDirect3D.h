@@ -222,8 +222,6 @@ private:
 
 	LPD3DXEFFECT            effect;
 	LPDIRECT3DTEXTURE9      rubyLUT[MAX_SHADER_TEXTURES];
-	CGcontext cgContext;
-	CGprogram cgVertexProgram, cgFragmentProgram;
 	current_d3d_shader_type shader_type;
 	bool cgAvailable;
 

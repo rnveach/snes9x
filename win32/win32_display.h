@@ -183,6 +183,18 @@
 #include "render.h"
 #include <vector>
 
+// TODO: upgrade M$ SDK
+extern "C++"
+{
+    template<typename T> void** IID_PPV_ARGS_Helper(T** pp) 
+    {
+        static_cast<IUnknown*>(*pp);    // make sure everyone derives from IUnknown
+        return reinterpret_cast<void**>(pp);
+    }
+}
+
+#define IID_PPV_ARGS(ppType) __uuidof(**(ppType)), IID_PPV_ARGS_Helper(ppType)
+
 #define IsHiRes(x) ((x.Height > SNES_HEIGHT_EXTENDED || x.Width == 512))
 #define CurrentScale (IsHiRes(Src) ? GUI.ScaleHiRes : GUI.Scale)
 

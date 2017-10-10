@@ -3,3 +3,5 @@
 win32/Release
 win32/Debug
 win32/Snes9X___Win32_C_core
+win32/snes9x.exe
+win32/snes9x.ilk

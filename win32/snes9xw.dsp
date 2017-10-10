@@ -55,7 +55,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib fmodvc.lib vfw32.lib /nologo /subsystem:windows /incremental:yes /machine:I386 /out:"snes9x.exe" /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll
+# ADD LINK32 zlib.lib libpng.lib comctl32.lib comdlg32.lib shell32.lib ole32.lib winmm.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib wsock32.lib advapi32.lib ddraw.lib dsound.lib dxguid.lib delayimp.lib fmodvc.lib vfw32.lib OleAut32.lib msxml2.lib /nologo /subsystem:windows /incremental:yes /machine:I386 /out:"snes9x.exe" /libpath:"..\..\FMOD\api\lib" /delayload:fmod.dll
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "Snes9X - Win32 Debug"
@@ -262,11 +262,31 @@ SOURCE=..\dma.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\dsp.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\dsp.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\dsp1.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=..\dsp1.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\dsp2.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\dsp3.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\dsp4.cpp
 # End Source File
 # Begin Source File
 
@@ -530,6 +550,22 @@ SOURCE=.\CDirectSound.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\CFMOD.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CFMOD.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\CFMODEx.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CFMODEx.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\cgFunctions.cpp
 # End Source File
 # Begin Source File
@@ -543,6 +579,14 @@ SOURCE=.\COpenGL.cpp
 # Begin Source File
 
 SOURCE=.\COpenGL.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\CXAudio2.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CXAudio2.h
 # End Source File
 # Begin Source File
 
@@ -575,6 +619,14 @@ SOURCE=.\win32_display.cpp
 # Begin Source File
 
 SOURCE=.\win32_display.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\win32_sound.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\win32_sound.h
 # End Source File
 # Begin Source File
 

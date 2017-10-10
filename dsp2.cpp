@@ -359,8 +359,8 @@ static void DSP2_Op0D (void)
 		pixloc += multiplier;
 	}
 
-	for (int32 i = 0; i < DSP2.Op0DOutLen; i++)
-		DSP2.output[i] = (pixelarray[i << 1] << 4) | pixelarray[(i << 1) + 1];
+	for (int32 j = 0; j < DSP2.Op0DOutLen; j++)
+		DSP2.output[j] = (pixelarray[j << 1] << 4) | pixelarray[(j << 1) + 1];
 }
 
 /*
