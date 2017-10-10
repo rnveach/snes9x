@@ -207,8 +207,6 @@ COpenGL::COpenGL(void)
 	shaderProgram = 0;
     vertexShader = 0;
     fragmentShader = 0;
-	cgContext = NULL;
-	cgVertexProgram = cgFragmentProgram = NULL;
 	cgAvailable = false;
 }
 
@@ -246,7 +244,6 @@ bool COpenGL::Initialize(HWND hWnd)
 		0,												// Reserved
 		0, 0, 0											// Layer Masks Ignored
 	};
-	PIXELFORMATDESCRIPTOR pfdSel;
 
 	if(!(pfdIndex=ChoosePixelFormat(hDC,&pfd))) {
 		DeInitialize();
@@ -282,9 +279,6 @@ bool COpenGL::Initialize(HWND hWnd)
 	glTexCoordPointer(2, GL_FLOAT, 0, texcoords);
 
 	cgAvailable = loadCgFunctions();
-	if(cgAvailable) {
-		cgContext = cgCreateContext();
-	}
 
 	GetClientRect(hWnd,&windowRect);
 	ChangeRenderSize(windowRect.right,windowRect.bottom);
@@ -327,7 +321,6 @@ void COpenGL::DeInitialize()
 void COpenGL::CreateDrawSurface()
 {
 	unsigned int neededSize;
-	HRESULT hr;
 
 	//we need at least 512 pixels (SNES_WIDTH * 2) so we can start with that value
 	quadTextureSize = 512;
@@ -408,7 +401,6 @@ void COpenGL::Render(SSurface Src)
 	SSurface Dst;
 	RECT dstRect;
 	unsigned int newFilterScale;
-	GLenum error;
 
 	if(!initDone) return;
 
@@ -462,24 +454,6 @@ void COpenGL::Render(SSurface Src)
 
 			location = glGetUniformLocation (shaderProgram, "rubyTextureSize");
 			glUniform2fv (location, 1, textureSize);
-		} else if(shader_type == OGL_SHADER_CG) {
-			CGparameter cgpModelViewProj = cgGetNamedParameter(cgVertexProgram, "modelViewProj");
-
-			cgGLSetStateMatrixParameter(cgpModelViewProj, CG_GL_MODELVIEW_PROJECTION_MATRIX, CG_GL_MATRIX_IDENTITY);
-
-#define setProgram2fv(program,varname,floats)\
-{\
-	CGparameter cgp = cgGetNamedParameter(program, varname);\
-	if(cgp)\
-		cgGLSetParameter2fv(cgp,floats);\
-}\
-
-			setProgram2fv(cgFragmentProgram,"IN.video_size",inputSize);
-			setProgram2fv(cgFragmentProgram,"IN.texture_size",textureSize);
-			setProgram2fv(cgFragmentProgram,"IN.output_size",outputSize);
-			setProgram2fv(cgVertexProgram,"IN.video_size",inputSize);
-			setProgram2fv(cgVertexProgram,"IN.texture_size",textureSize);
-			setProgram2fv(cgVertexProgram,"IN.output_size",outputSize);
 		}
     }
 
@@ -678,91 +652,15 @@ bool COpenGL::SetShaders(const TCHAR *file)
 
 void COpenGL::checkForCgError(const char *situation)
 {
-	char buffer[4096];
-	CGerror error = cgGetError();
-	const char *string = cgGetErrorString(error);
-
-	if (error != CG_NO_ERROR) {
-		sprintf(buffer,
-			  "Situation: %s\n"
-			  "Error: %s\n\n"
-			  "Cg compiler output...\n", situation, string);
-		MessageBoxA(0, buffer,
-				  "Cg error", MB_OK|MB_ICONEXCLAMATION);
-		if (error == CG_COMPILER_ERROR) {
-			MessageBoxA(0, cgGetLastListing(cgContext),
-					  "Cg compilation error", MB_OK|MB_ICONEXCLAMATION);
-		}
-	}
 }
 
 bool COpenGL::SetShadersCG(const TCHAR *file)
 {
-	TCHAR errorMsg[MAX_PATH + 50];
-	HRESULT hr;
-	CGprofile vertexProfile, fragmentProfile;
-
-	if(cgFragmentProgram) {
-		cgDestroyProgram(cgFragmentProgram);
-		cgFragmentProgram = NULL;
-	}
-	if(cgVertexProgram) {
-		cgDestroyProgram(cgVertexProgram);
-		cgVertexProgram = NULL;
-	}
-
-	if(cgAvailable) {
-		vertexProfile = cgGLGetLatestProfile(CG_GL_VERTEX);
-		fragmentProfile = cgGLGetLatestProfile(CG_GL_FRAGMENT);
-
-		cgGLDisableProfile(vertexProfile);
-		cgGLDisableProfile(fragmentProfile);
-	}
-
-	if (file == NULL || *file==TEXT('\0'))
-		return true;
-
 	if(!cgAvailable) {
 		MessageBox(NULL, TEXT("The CG runtime is unavailable, CG shaders will not run.\nConsult the snes9x readme for information on how to obtain the runtime."), TEXT("CG Error"),
 			MB_OK|MB_ICONEXCLAMATION);
         return false;
     }
-
-	cgGLSetOptimalOptions(vertexProfile);
-	cgGLSetOptimalOptions(fragmentProfile);
-
-	char *fileContents = ReadShaderFileContents(file);
-	if(!fileContents)
-		return false;
-
-	cgVertexProgram = cgCreateProgram( cgContext, CG_SOURCE, fileContents,
-						vertexProfile, "main_vertex", NULL);
-
-	checkForCgError("Compiling vertex program");
-
-	cgFragmentProgram = cgCreateProgram( cgContext, CG_SOURCE, fileContents,
-						fragmentProfile, "main_fragment", NULL);
-
-	checkForCgError("Compiling fragment program");
-
-	delete [] fileContents;
-
-	if(!cgVertexProgram || !cgFragmentProgram) {
-		return false;
-	}
-
-	if(cgVertexProgram) {
-		cgGLEnableProfile(vertexProfile);
-		cgGLLoadProgram(cgVertexProgram);
-		cgGLBindProgram(cgVertexProgram);
-	}
-	if(cgFragmentProgram) {
-		cgGLEnableProfile(fragmentProfile);
-		cgGLLoadProgram(cgFragmentProgram);
-		cgGLBindProgram(cgFragmentProgram);
-	}
-
-	shader_type = OGL_SHADER_CG;
 
 	return true;
 }
