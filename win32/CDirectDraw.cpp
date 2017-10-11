@@ -245,7 +245,7 @@ bool CDirectDraw::Initialize (HWND hWnd)
     if(FAILED(dErr))
         return false;
 
-	if (!SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate,
+	if (!SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, std::max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate,
 		TRUE, GUI.DoubleBuffered))
     {
         MessageBox( GUI.hWnd, Languages[ GUI.Language].errModeDD, TEXT("Snes9X - DirectDraw(7)"), MB_OK | MB_ICONSTOP);
@@ -585,7 +585,7 @@ void CDirectDraw::Render(SSurface Src)
 	{
 		SSurface tmp;
 		
-		newFilterScale = max(2,max(GetFilterScale(GUI.ScaleHiRes),GetFilterScale(GUI.Scale)));
+		newFilterScale = std::max(2,std::max(GetFilterScale(GUI.ScaleHiRes),GetFilterScale(GUI.Scale)));
 
 		if(newFilterScale!=filterScale) {
 			if(convertBuffer)
@@ -716,15 +716,15 @@ void CDirectDraw::Render(SSurface Src)
 		{
 			rect.top = lastRect.top;
 			rect.bottom = dstRect.top;
-			rect.left = min(lastRect.left, dstRect.left);
-			rect.right = max(lastRect.right, dstRect.right);
+			rect.left = std::min(lastRect.left, dstRect.left);
+			rect.right = std::max(lastRect.right, dstRect.right);
 			lpDDSurface2->Blt (&rect, NULL, &rect,
 							   DDBLT_WAIT | DDBLT_COLORFILL, &fx);
 		}
 		if (lastRect.bottom > dstRect.bottom)
 		{
-			rect.left = min(lastRect.left, dstRect.left);
-			rect.right = max(lastRect.right, dstRect.right);
+			rect.left = std::min(lastRect.left, dstRect.left);
+			rect.right = std::max(lastRect.right, dstRect.right);
 			rect.top = dstRect.bottom;
 			rect.bottom = lastRect.bottom;
 			lpDDSurface2->Blt (&rect, NULL, &rect,
@@ -761,7 +761,7 @@ void CDirectDraw::Render(SSurface Src)
 
 bool CDirectDraw::ApplyDisplayChanges(void)
 {
-	return SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate,
+	return SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, std::max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate,
 		!GUI.FullScreen, GUI.DoubleBuffered);
 }
 
@@ -772,7 +772,7 @@ bool CDirectDraw::ChangeRenderSize(unsigned int newWidth, unsigned int newHeight
 
 bool CDirectDraw::SetFullscreen(bool fullscreen)
 {
-	if (!SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate, !fullscreen, GUI.DoubleBuffered))
+	if (!SetDisplayMode (GUI.FullscreenMode.width, GUI.FullscreenMode.height, std::max(GetFilterScale(GUI.Scale), GetFilterScale(GUI.ScaleHiRes)), GUI.FullscreenMode.depth, GUI.FullscreenMode.rate, !fullscreen, GUI.DoubleBuffered))
 	{
 		MessageBox( GUI.hWnd, Languages[ GUI.Language].errModeDD, TEXT("Snes9X - DirectDraw(2)"), MB_OK | MB_ICONSTOP);
 		return false;

@@ -190,7 +190,7 @@
 
 #ifndef CXHAUDIO2_H
 #define CXAUDIO2_H
-#include "XAudio2.h"
+#include "xaudio2.h"
 #include "../snes9x.h"
 #include <windows.h>
 #include "IS9xSoundOutput.h"

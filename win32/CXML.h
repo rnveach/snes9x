@@ -1,7 +1,7 @@
 #ifndef CXML_H
 #define CXML_H
 
-#include "msxml2.h"
+#include "MsXml2.h"
 #include <tchar.h>
 
 class CXML

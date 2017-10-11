@@ -213,6 +213,7 @@
 #include <dsound.h>
 #endif
 #include "rsrc/resource.h"
+#include "../display.h"
 
 #define COUNT(a) (sizeof (a) / sizeof (a[0]))
 #define GUI_VERSION 1008

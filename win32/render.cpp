@@ -210,7 +210,7 @@
 #include "snes_ntsc.h"
 #include "../filter/xbrz.h"
 #include <vector>
-#include <intrin.h>
+//#include <intrin.h>
 
 // Private Prototypes, should not be called directly
 void RenderPlain (SSurface Src, SSurface Dst, RECT *);

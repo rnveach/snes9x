@@ -191,6 +191,12 @@
 #ifndef _CPUADDR_H_
 #define _CPUADDR_H_
 
+#ifdef SA1_OPCODES
+#define AddCycles(n)	{ SA1.Cycles += (n); }
+#else
+#define AddCycles(n)	{ CPU.PrevCycles = CPU.Cycles; CPU.Cycles += (n); S9xCheckInterrupts(); while (CPU.Cycles >= CPU.NextEvent) S9xDoHEventProcessing(); }
+#endif
+
 typedef enum
 {
 	NONE   = 0,

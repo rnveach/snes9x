@@ -260,6 +260,8 @@ extern SNPServer NPServer;
 
 #include <ctype.h>
 
+#define _stprintf_s(buffer, size, text, replacement) _stprintf(buffer, text, replacement)
+
 #ifdef _MSC_VER
 #define F_OK 0
 #define X_OK 1

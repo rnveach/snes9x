@@ -18,9 +18,10 @@
 #include <algorithm>
 #include <vector>
 
-#ifndef WIN32
+// mingw too
+//#ifndef WIN32
 #include <cmath>
-#endif
+// #endif
 
 namespace
 {
@@ -428,8 +429,8 @@ void blendPixel(const Kernel_3x3& ker,
 
 #ifdef WIN32
 #ifndef NDEBUG
-    if (breakIntoDebugger)
-        __debugbreak(); //__asm int 3;
+    //if (breakIntoDebugger)
+    //    __debugbreak(); //__asm int 3;
 #endif
 #endif
 
